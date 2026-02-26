@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
 import { getProductById } from "@/lib/products";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,6 +25,8 @@ export async function POST(request: NextRequest) {
 
     const baseUrl =
       process.env.NEXT_PUBLIC_BASE_URL ?? "https://kolhair.com";
+
+    const { stripe } = await import("@/lib/stripe");
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
