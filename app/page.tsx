@@ -2,8 +2,9 @@ import Hero from "@/components/Hero";
 import SecretSection from "@/components/SecretSection";
 import ProblemSolution from "@/components/ProblemSolution";
 import HowItWorks from "@/components/HowItWorks";
-import Colors from "@/components/Colors";
+import ColorSelector from "@/components/ColorSelector";
 import Benefits from "@/components/Benefits";
+import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import PurchaseSection from "@/components/PurchaseSection";
 import FAQ from "@/components/FAQ";
@@ -16,8 +17,9 @@ export default function Home() {
       <SecretSection />
       <ProblemSolution />
       <HowItWorks />
-      <Colors />
+      <ColorSelector />
       <Benefits />
+      <BeforeAfter />
       <Testimonials />
       <PurchaseSection />
       <FAQ />

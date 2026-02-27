@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kolhair — Brief de Imágenes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAFAF8;
+    color: #1A1A1A;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, #3D2314 0%, #6B3A22 60%, #8B5E3C 100%);
+    color: #FAFAF8;
+    padding: 80px 60px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 24px;
+  }
+  .cover-subtitle {
+    font-size: 16px;
+    opacity: 0.75;
+    margin-top: 12px;
+    font-weight: 300;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.6;
+  }
+  .cover-meta span { display: flex; flex-direction: column; gap: 2px; }
+  .cover-meta strong { font-size: 13px; opacity: 1; font-weight: 600; }
+
+  /* LAYOUT */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 40px 40px 32px;
+    background: #fff;
+    border-bottom: 1px solid #E8E0D8;
+  }
+  .intro p {
+    font-size: 14px;
+    color: #555;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .intro strong { color: #3D2314; }
+
+  /* SUMMARY TABLE */
+  .summary {
+    padding: 32px 40px;
+    background: #F5EFE8;
+    border-bottom: 1px solid #E8E0D8;
+  }
+  .summary h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #3D2314;
+    margin-bottom: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead tr {
+    background: #3D2314;
+    color: #FAFAF8;
+  }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: #EEE5DA; }
+  tbody tr:nth-child(odd) { background: #F5EFE8; }
+  tbody td { padding: 9px 14px; color: #3D2314; }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-red { background: #3D2314; color: #FAFAF8; }
+  .badge-orange { background: #8B5E3C; color: #FAFAF8; }
+  .badge-yellow { background: #D4A96A; color: #3D2314; }
+
+  /* SECTION */
+  .section {
+    padding: 40px 40px 32px;
+    border-bottom: 1px solid #E8E0D8;
+    background: #fff;
+  }
+  .section:nth-child(even) { background: #FAFAF8; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .img-number {
+    background: #3D2314;
+    color: #FAFAF8;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #3D2314;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .section-where {
+    font-size: 11px;
+    color: #8B5E3C;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .spec-item {
+    background: #F5EFE8;
+    border-radius: 10px;
+    padding: 12px 16px;
+    border-left: 3px solid #3D2314;
+  }
+  .spec-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8B5E3C;
+    margin-bottom: 4px;
+  }
+  .spec-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3D2314;
+  }
+
+  .desc-box {
+    background: #FBF7F3;
+    border: 1px solid #E8D5C0;
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .desc-box h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8B5E3C;
+    margin-bottom: 12px;
+  }
+  .desc-box p {
+    color: #444;
+    line-height: 1.75;
+    font-size: 13px;
+  }
+  .desc-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .desc-box li {
+    padding: 5px 0;
+    color: #444;
+    font-size: 13px;
+    padding-left: 16px;
+    position: relative;
+  }
+  .desc-box li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #8B5E3C;
+    font-weight: 600;
+  }
+
+  /* COLOR VARIANTS */
+  .variants-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .variant-card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #E8D5C0;
+  }
+  .variant-color {
+    height: 50px;
+    width: 100%;
+  }
+  .variant-info {
+    padding: 10px 12px;
+    background: #fff;
+  }
+  .variant-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #3D2314;
+    margin-bottom: 3px;
+  }
+  .variant-hex {
+    font-size: 10px;
+    color: #8B5E3C;
+    font-family: monospace;
+  }
+
+  /* PRIORITY SECTION */
+  .priority-banner {
+    background: #3D2314;
+    color: #FAFAF8;
+    padding: 24px 40px;
+    margin: 0;
+  }
+  .priority-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .priority-banner p {
+    font-size: 12px;
+    opacity: 0.75;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #2A1509;
+    color: #FAFAF8;
+    padding: 32px 40px;
+    text-align: center;
+  }
+  .footer p { font-size: 12px; opacity: 0.6; margin-top: 6px; }
+  .footer strong { font-family: 'Playfair Display', serif; font-size: 18px; opacity: 1; display: block; margin-bottom: 8px; }
+
+  /* PAGE BREAKS */
+  @media print {
+    body { background: #fff; }
+    .page-break { page-break-after: always; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-brand">Kolhair · COMERCIONLINE</div>
+  <div>
+    <div class="cover-title">Brief de Imágenes<br>para Diseño</div>
+    <div class="cover-subtitle">Especificaciones técnicas y visuales completas — 10 imágenes</div>
+  </div>
+  <div class="cover-meta">
+    <span><strong>Fecha</strong>Febrero 2026</span>
+    <span><strong>Proyecto</strong>Landing Page Kolhair</span>
+    <span><strong>Herramienta</strong>Nano Banana</span>
+    <span><strong>Formato entrega</strong>PNG / JPG</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p>
+    Este brief contiene las especificaciones exactas para las <strong>10 imágenes</strong> que necesita la landing page de Kolhair.
+    Las imágenes están organizadas por <strong>prioridad de entrega</strong>: empieza por las marcadas en rojo (críticas) —
+    con esas 5 la página ya tiene producto real visible. Las naranjas y amarillas pueden entregarse en una segunda ronda.
+    <br><br>
+    <strong>Paleta de la marca:</strong> &nbsp;
+    Marrón oscuro <code style="background:#3D2314;color:#fff;padding:1px 6px;border-radius:4px;">#3D2314</code> &nbsp;
+    Castaño <code style="background:#8B5E3C;color:#fff;padding:1px 6px;border-radius:4px;">#8B5E3C</code> &nbsp;
+    Crema <code style="background:#FAFAF8;color:#3D2314;border:1px solid #ddd;padding:1px 6px;border-radius:4px;">#FAFAF8</code>
+  </p>
+</div>
+
+<!-- SUMMARY TABLE -->
+<div class="summary">
+  <h2>Resumen de todas las imágenes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Imagen</th>
+        <th>Dimensiones</th>
+        <th>Formato</th>
+        <th>Uso</th>
+        <th>Prioridad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Frasco Hero (fondo oscuro, vista 3/4)</td>
+        <td>600 × 800px</td>
+        <td>PNG o JPG</td>
+        <td>Hero — columna derecha</td>
+        <td><span class="badge badge-red">Crítica</span></td>
+      </tr>
+      <tr>
+        <td><strong>2A</strong></td>
+        <td>Frasco Negro (fondo blanco)</td>
+        <td>480 × 560px</td>
+        <td>PNG</td>
+        <td>Sección Colores / Tienda</td>
+        <td><span class="badge badge-red">Crítica</span></td>
+      </tr>
+      <tr>
+        <td><strong>2B</strong></td>
+        <td>Frasco Castaño Oscuro (fondo blanco)</td>
+        <td>480 × 560px</td>
+        <td>PNG</td>
+        <td>Sección Colores / Tienda</td>
+        <td><span class="badge badge-red">Crítica</span></td>
+      </tr>
+      <tr>
+        <td><strong>2C</strong></td>
+        <td>Frasco Castaño Claro (fondo blanco)</td>
+        <td>480 × 560px</td>
+        <td>PNG</td>
+        <td>Sección Colores / Tienda</td>
+        <td><span class="badge badge-red">Crítica</span></td>
+      </tr>
+      <tr>
+        <td><strong>2D</strong></td>
+        <td>Frasco Marrón (fondo blanco)</td>
+        <td>480 × 560px</td>
+        <td>PNG</td>
+        <td>Sección Colores / Tienda</td>
+        <td><span class="badge badge-red">Crítica</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>Manos aplicando en la ducha</td>
+        <td>800 × 600px</td>
+        <td>JPG</td>
+        <td>Sección Cómo Funciona</td>
+        <td><span class="badge badge-orange">Importante</span></td>
+      </tr>
+      <tr>
+        <td><strong>4A</strong></td>
+        <td>Hombre resultado (50-58 años)</td>
+        <td>600 × 700px</td>
+        <td>JPG</td>
+        <td>Testimonios / SecretSection</td>
+        <td><span class="badge badge-orange">Importante</span></td>
+      </tr>
+      <tr>
+        <td><strong>4B</strong></td>
+        <td>Mujer resultado (48-55 años)</td>
+        <td>600 × 700px</td>
+        <td>JPG</td>
+        <td>Testimonios</td>
+        <td><span class="badge badge-orange">Importante</span></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>Flat lay 4 frascos juntos (OG image)</td>
+        <td>1200 × 630px</td>
+        <td>JPG</td>
+        <td>Redes sociales / SEO OG</td>
+        <td><span class="badge badge-orange">Importante</span></td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>Frasco en mano (lifestyle baño)</td>
+        <td>600 × 800px</td>
+        <td>JPG</td>
+        <td>Lifestyle / Sección beneficios</td>
+        <td><span class="badge badge-yellow">Opcional</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- IMAGE 1 -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">1</div>
+      <div>
+        <div class="section-title">Frasco Hero — Vista Principal</div>
+        <div class="section-where">Uso: Hero — columna derecha · Primera imagen que ve el usuario</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones</div>
+        <div class="spec-value">600 × 800 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">3 : 4 (portrait)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">PNG o JPG</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Fondo</div>
+        <div class="spec-value">Oscuro degradado</div>
+      </div>
+    </div>
+
+    <div class="desc-box">
+      <h4>Descripción visual detallada</h4>
+      <p>
+        Frasco de shampoo cilíndrico premium de 300ml. Cuerpo del frasco color <strong>crema claro (#F5F0E8)</strong>.
+        Tapa y detalles en <strong>marrón oscuro profundo (#3D2314)</strong>. Etiqueta minimalista centrada con texto
+        "KOLHAIR" en tipografía serif dorada/crema, debajo "Shampoo Colorante · Negro · 300ml".
+        <br><br>
+        El frasco está <strong>girado en perspectiva 3/4</strong> (no frontal directo), inclinado unos 10°.
+        Fondo degradado oscuro de marrón muy oscuro a negro (<code>#1A0A04</code> → <code>#000000</code>).
+        Iluminación lateral suave desde la izquierda, con reflejo sutil en el costado del frasco.
+        Sombra larga y suave debajo. Sin props, sin personas, solo el frasco.
+        <br><br>
+        <strong>Estilo:</strong> Fotografía de producto de lujo. Limpia, minimalista, elegante. Como los productos de skincare premium europeos.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGES 2A-2D -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">2</div>
+      <div>
+        <div class="section-title">Los 4 Frascos por Color — Fondo Blanco</div>
+        <div class="section-where">Uso: Sección "4 tonos" y sección "Comprar" · Son 4 imágenes separadas</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones (c/u)</div>
+        <div class="spec-value">480 × 560 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">~6 : 7 (portrait)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">PNG (fondo transparente o blanco puro)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Vista</div>
+        <div class="spec-value">Frontal directa</div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#555;margin-bottom:16px;">
+      Son 4 imágenes del <strong>mismo frasco</strong>, idéntica forma y composición. Solo cambia el color de la etiqueta y la tapa según cada variante.
+      Fondo blanco puro <code>#FFFFFF</code>. Vista frontal directa. Iluminación suave y pareja desde arriba.
+    </p>
+
+    <div class="variants-grid">
+      <div class="variant-card">
+        <div class="variant-color" style="background:#1C1C1C;"></div>
+        <div class="variant-info">
+          <div class="variant-name">2A — Negro</div>
+          <div class="variant-hex">Tapa: #1C1C1C</div>
+          <div style="font-size:11px;color:#555;margin-top:4px;">Banda negra en etiqueta · Texto blanco · "Cobertura total"</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-color" style="background:#3B1F0E;"></div>
+        <div class="variant-info">
+          <div class="variant-name">2B — Castaño Oscuro</div>
+          <div class="variant-hex">Tapa: #3B1F0E</div>
+          <div style="font-size:11px;color:#555;margin-top:4px;">Banda marrón oscura · Texto crema · "Resultado profundo"</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-color" style="background:#7B4F2E;"></div>
+        <div class="variant-info">
+          <div class="variant-name">2C — Castaño Claro</div>
+          <div class="variant-hex">Tapa: #7B4F2E</div>
+          <div style="font-size:11px;color:#555;margin-top:4px;">Banda castaño claro · Texto blanco · "Tono cálido"</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-color" style="background:#5C3317;"></div>
+        <div class="variant-info">
+          <div class="variant-name">2D — Marrón</div>
+          <div class="variant-hex">Tapa: #5C3317</div>
+          <div style="font-size:11px;color:#555;margin-top:4px;">Banda marrón rojiza · Texto crema · "Matices cobrizos"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desc-box" style="margin-top:16px;">
+      <h4>Nota importante para las 4 variantes</h4>
+      <ul>
+        <li>El frasco debe ser exactamente el mismo objeto en las 4 imágenes — solo cambia el color de la etiqueta/tapa</li>
+        <li>Iluminación idéntica en las 4 para que se vean consistentes en la web</li>
+        <li>El texto de la etiqueta siempre incluye: nombre del color + "Shampoo Colorante" + "300ml"</li>
+        <li>Si se entrega PNG con fondo transparente es ideal — permite usarlo sobre cualquier fondo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE 3 -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">3</div>
+      <div>
+        <div class="section-title">Manos Aplicando en la Ducha</div>
+        <div class="section-where">Uso: Sección "Cómo Funciona" — paso 2</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones</div>
+        <div class="spec-value">800 × 600 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">4 : 3 (landscape)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">JPG</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Tono</div>
+        <div class="spec-value">Cálido, íntimo</div>
+      </div>
+    </div>
+
+    <div class="desc-box">
+      <h4>Descripción visual detallada</h4>
+      <p>
+        <strong>Primer plano de dos manos</strong> (sin ver la cara ni el cuerpo) masajeando el cabello mojado oscuro de una persona.
+        Espuma blanca cremosa visible entre los dedos y el cabello. Agua cayendo levemente de fondo, con vapor sutil.
+        Iluminación cálida de baño, tono dorado suave. Fondo muy desenfocado (bokeh fuerte).
+        <br><br>
+        El cabello es oscuro, grueso, mojado. Las manos son de adulto, cuidadas.
+        Ambiente íntimo, privado, cotidiano — sin drama, sin escenificación.
+        <br><br>
+        <strong>Paleta:</strong> blancos, cremas, marrones cálidos, vapor blanco. <strong>Sin colores artificiales ni neon.</strong>
+        <br>
+        <strong>Estilo:</strong> Fotografía de stock premium realista, no genérica de banco de imágenes.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGES 4A & 4B -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">4</div>
+      <div>
+        <div class="section-title">Personas — Resultado Final</div>
+        <div class="section-where">Uso: Sección Testimonios · Son 2 imágenes (4A hombre, 4B mujer)</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones (c/u)</div>
+        <div class="spec-value">600 × 700 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">~6 : 7 (portrait)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">JPG</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Tono</div>
+        <div class="spec-value">Profesional, natural</div>
+      </div>
+    </div>
+
+    <div class="desc-box" style="margin-bottom:16px;">
+      <h4>4A — Hombre</h4>
+      <p>
+        Hombre entre <strong>50 y 58 años</strong>. Cabello oscuro (castaño oscuro o negro), uniforme, bien peinado, <strong>sin canas visibles</strong>.
+        Aspecto de ejecutivo o empresario exitoso: traje oscuro o camisa de botones sin corbata.
+        Expresión segura, confiada, natural — no sonrisa forzada. Fondo neutro difuminado (gris oscuro o interior moderno).
+        Iluminación profesional, suave, lateral.
+        <br><br>
+        No parece teñido ni artificial: simplemente se ve bien para su edad.
+        <strong>Que se vea que este hombre tiene poder y clase.</strong>
+        Nada de stock genérico con sonrisa de pasta.
+      </p>
+    </div>
+
+    <div class="desc-box">
+      <h4>4B — Mujer</h4>
+      <p>
+        Mujer entre <strong>48 y 55 años</strong>. Cabello castaño oscuro liso o con ondas suaves, brillante, <strong>sin canas visibles</strong>, aspecto sano y natural (no artificial).
+        Ropa elegante casual: blusa neutral, blanca o crema.
+        Expresión tranquila, cómoda consigo misma — no posa, simplemente se ve bien.
+        Fondo neutro claro o interior luminoso. Iluminación natural suave desde una ventana lateral.
+        <br><br>
+        Que transmita: <em>"no fui al salón, simplemente me cuido".</em>
+        Sin look glamour exagerado. <strong>Realista y aspiracional al mismo tiempo.</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE 5 -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">5</div>
+      <div>
+        <div class="section-title">Flat Lay — 4 Frascos Juntos (OG Image)</div>
+        <div class="section-where">Uso: Redes sociales · Previsualización al compartir el link · SEO</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones</div>
+        <div class="spec-value">1200 × 630 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">~2 : 1 (landscape)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">JPG</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Vista</div>
+        <div class="spec-value">Cenital (desde arriba 90°)</div>
+      </div>
+    </div>
+
+    <div class="desc-box">
+      <h4>Descripción visual detallada</h4>
+      <p>
+        Vista cenital (desde arriba, 90°) de los 4 frascos Kolhair alineados en diagonal o en arco
+        sobre una <strong>superficie de madera oscura o mármol negro veteado</strong>.
+        Entre los frascos, opcionalmente hojas secas pequeñas o la superficie sola.
+        Iluminación tenue lateral, sombras largas y suaves.
+        <br><br>
+        En la <strong>esquina inferior derecha</strong> se puede dejar espacio vacío para agregar el texto
+        "KOLHAIR · Natural · Sin químicos" en tipografía serif crema en Canva (o incluirlo directamente).
+        <br><br>
+        <strong>Paleta:</strong> Oscura, cálida, premium.
+        <strong>Estilo:</strong> Editorial de revista de lujo o lifestyle de producto natural de alto valor.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE 6 -->
+<div class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="img-number">6</div>
+      <div>
+        <div class="section-title">Frasco en Mano — Lifestyle</div>
+        <div class="section-where">Uso: Sección Beneficios · Opcional, segunda ronda</div>
+      </div>
+    </div>
+
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Dimensiones</div>
+        <div class="spec-value">600 × 800 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Ratio</div>
+        <div class="spec-value">3 : 4 (portrait)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Formato</div>
+        <div class="spec-value">JPG</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Tono</div>
+        <div class="spec-value">Íntimo, cotidiano</div>
+      </div>
+    </div>
+
+    <div class="desc-box">
+      <h4>Descripción visual detallada</h4>
+      <p>
+        Mano de hombre (sin ver más allá del antebrazo) sosteniendo el frasco de Kolhair Negro.
+        Mano cuidada, adulta, de unos 45-55 años. Fondo de baño o ducha moderno, borroso.
+        El frasco bien visible y en foco. Luz cálida de baño.
+        <br><br>
+        <strong>Estilo:</strong> Íntimo, real, cotidiano.
+        Que transmita: <em>"esto cabe en tu rutina sin que nadie lo sepa".</em>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- PRIORITY NOTE -->
+<div class="priority-banner">
+  <div class="container">
+    <h3>Orden de entrega sugerido</h3>
+    <p>
+      <strong>Primera ronda (críticas):</strong> Imágenes 1, 2A, 2B, 2C, 2D — con estas la web queda con producto real visible. &nbsp;|&nbsp;
+      <strong>Segunda ronda:</strong> Imágenes 3, 4A, 4B, 5 &nbsp;|&nbsp;
+      <strong>Opcional:</strong> Imagen 6
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>KOLHAIR</strong>
+  <p>Brief preparado por COMERCIONLINE · Febrero 2026</p>
+  <p>Dudas: ronaldoabreu282@gmail.com</p>
+</div>
+
+</body>
+</html>

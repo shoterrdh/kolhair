@@ -23,7 +23,7 @@ export default function Hero() {
             <p className="text-cream-100/80 text-lg sm:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Kolhair cubre tus canas progresivamente con cada lavado.
               Sin químicos agresivos, sin manchas, sin cambiar nada de
-              lo que ya haces. Solo cambia el shampoo.
+              lo que ya haces. Úsalo cuando lo necesites.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -4,8 +4,10 @@ export interface Product {
   description: string;
   colorHex: string;
   colorLight: string;
-  price: number; // in cents USD
+  price: number;           // one-time, cents USD  ($45.00)
   priceDisplay: string;
+  priceSubscriptionFirst: number;   // first subscription delivery ($40.00)
+  priceSubscriptionRecurring: number; // recurring ($30.00)
   tagline: string;
 }
 
@@ -16,8 +18,10 @@ export const products: Product[] = [
     description: "Cobertura intensa. Ideal para canas muy marcadas y cabello oscuro.",
     colorHex: "#1C1C1C",
     colorLight: "#4A4A4A",
-    price: 2999, // $29.99 — UPDATE BEFORE LAUNCH
-    priceDisplay: "$29.99",
+    price: 4500,
+    priceDisplay: "$45.00",
+    priceSubscriptionFirst: 4000,
+    priceSubscriptionRecurring: 3000,
     tagline: "Profundo y duradero",
   },
   {
@@ -26,8 +30,10 @@ export const products: Product[] = [
     description: "Tono natural oscuro. Resultado elegante y sofisticado.",
     colorHex: "#3B1F0E",
     colorLight: "#6B3A22",
-    price: 2999,
-    priceDisplay: "$29.99",
+    price: 4500,
+    priceDisplay: "$45.00",
+    priceSubscriptionFirst: 4000,
+    priceSubscriptionRecurring: 3000,
     tagline: "Elegante y sofisticado",
   },
   {
@@ -36,8 +42,10 @@ export const products: Product[] = [
     description: "Tono cálido y luminoso. Perfecto para un look natural y rejuvenecido.",
     colorHex: "#7B4F2E",
     colorLight: "#A67A54",
-    price: 2999,
-    priceDisplay: "$29.99",
+    price: 4500,
+    priceDisplay: "$45.00",
+    priceSubscriptionFirst: 4000,
+    priceSubscriptionRecurring: 3000,
     tagline: "Cálido y luminoso",
   },
   {
@@ -46,8 +54,10 @@ export const products: Product[] = [
     description: "El clásico marrón natural. Versátil y favorecedor para todo tipo de cabello.",
     colorHex: "#5C3317",
     colorLight: "#8B5E3C",
-    price: 2999,
-    priceDisplay: "$29.99",
+    price: 4500,
+    priceDisplay: "$45.00",
+    priceSubscriptionFirst: 4000,
+    priceSubscriptionRecurring: 3000,
     tagline: "Natural y versátil",
   },
 ];

@@ -107,6 +107,27 @@ export default function HowItWorks() {
                   </div>
                 </div>
               ))}
+
+              <div className="mt-6 pt-6 border-t border-brown-100">
+                <p className="font-semibold text-brown-700 mb-2">¿Cuánto rinde un frasco?</p>
+                <p className="text-gray-500 text-sm leading-relaxed mb-3">
+                  En promedio, <strong className="text-brown-600">15 a 20 usos por frasco</strong>, dependiendo de cuánto cabello necesita cobertura:
+                </p>
+                <div className="space-y-2">
+                  {[
+                    { caso: "Cabello completamente blanco", rinde: "~15 usos", nota: "Más pigmento al inicio" },
+                    { caso: "Canas parciales o solo raíces", rinde: "~20 usos", nota: "Mantenimiento más eficiente" },
+                  ].map((r) => (
+                    <div key={r.caso} className="flex items-start gap-3 bg-brown-50 rounded-xl px-4 py-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brown-400 mt-1.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-brown-700 text-sm font-medium">{r.caso}</p>
+                        <p className="text-brown-400 text-xs">{r.rinde} · {r.nota}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

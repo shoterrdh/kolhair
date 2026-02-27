@@ -29,6 +29,16 @@ const testimonials = [
     text: "Mi trabajo requiere que me vea presentable todo el tiempo. Las canas me hacían ver mayor de lo que soy y me incomodaba la idea de ir a teñirme. Kolhair resolvió el problema sin drama. Es discreto, progresivo y funciona. Cuatro meses usándolo y no lo dejo.",
     avatar: "RS",
   },
+  {
+    name: "Diego M.",
+    age: "27 años",
+    profile: "Diseñador gráfico",
+    color: "Castaño Oscuro",
+    gender: "M",
+    rating: 5,
+    text: "Me salieron las primeras canas a los 16. En mi familia todos tenemos ese gen. A los 20 ya tenía bastante, pero no quería empezar a teñirme tan joven — me preocupaba el daño, los químicos, el compromiso de hacerlo para siempre. Estuve años ignorándolo. Cuando encontré Kolhair entendí que había una opción completamente distinta: no es tinte, no daña, no obliga a nada. Solo funciona mientras te duchas. Llevo tres meses y no recuerdo cuándo fue la última vez que me preocupé por esto.",
+    avatar: "DM",
+  },
 ];
 
 export default function Testimonials() {
@@ -43,11 +53,11 @@ export default function Testimonials() {
             &ldquo;Nadie sabe que lo uso.<br />Solo ven que me veo bien.&rdquo;
           </h2>
           <p className="text-cream-100/70 text-lg max-w-xl mx-auto">
-            Hombres y mujeres que encontraron la solución discreta que buscaban.
+            Hombres y mujeres — de 20 a 60 años — que encontraron la solución discreta que buscaban.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {testimonials.map((t) => (
             <div
               key={t.name}
