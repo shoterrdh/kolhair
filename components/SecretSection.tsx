@@ -8,11 +8,7 @@ export default function SecretSection() {
 
         <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cream-50 leading-relaxed mb-8">
           &ldquo;Muchas de las personas más reconocidas del mundo llevan
-          décadas con el mismo tono de cabello.{" "}
-          <span className="italic text-brown-200">
-            Siempre igual. Sin cambios bruscos.
-          </span>{" "}
-          Sin que nadie sepa exactamente cuándo ni cómo.&rdquo;
+          décadas con el mismo tono de cabello.&rdquo;
         </blockquote>
 
         <p className="text-cream-100/60 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
