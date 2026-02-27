@@ -7,7 +7,7 @@ export default function SecretSection() {
         </p>
 
         <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cream-50 leading-relaxed mb-8">
-          &ldquo;Muchos de los hombres más reconocidos del mundo llevan
+          &ldquo;Muchas de las personas más reconocidas del mundo llevan
           décadas con el mismo tono de cabello.{" "}
           <span className="italic text-brown-200">
             Siempre igual. Sin cambios bruscos.
@@ -16,7 +16,7 @@ export default function SecretSection() {
         </blockquote>
 
         <p className="text-cream-100/60 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-          Políticos. Empresarios. Figuras públicas. Todos con imagen impecable,
+          Figuras públicas, artistas, políticos, empresarios — todos con imagen impecable,
           ninguno en la peluquería tiñéndose. No es cirugía. No es magia.
           Es un hábito silencioso que ocurre en la ducha.
         </p>
