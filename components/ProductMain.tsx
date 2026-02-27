@@ -131,7 +131,7 @@ export default function ProductMain() {
               Kolhair
             </h1>
             <p className="text-xs font-semibold tracking-widest uppercase text-brown-400 mb-5">
-              El shampoo que cubre tus canas naturalmente
+              Más joven en cada ducha. 100% natural.
             </p>
 
             {/* Benefits — compact single container */}
