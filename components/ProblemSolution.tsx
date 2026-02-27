@@ -64,12 +64,15 @@ export default function ProblemSolution() {
           <h3 className="font-serif text-3xl sm:text-4xl font-bold mb-4">
             Mismo objetivo. Cero ritual.
           </h3>
-          <p className="text-cream-100/80 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-cream-100/80 text-lg max-w-2xl mx-auto leading-relaxed mb-8">
             Kolhair no reemplaza tu shampoo — lo complementa.
             Úsalo cuando quieras, tan seguido o tan poco como necesites.
             Los pigmentos naturales cubren las canas de forma progresiva y discreta.
             <strong className="text-cream-50"> Nadie sabe que lo estás usando. Solo ven que te ves bien.</strong>
           </p>
+          <a href="/producto" className="inline-block bg-cream-50 text-brown-700 font-semibold px-8 py-4 rounded-2xl hover:bg-cream-100 transition-colors text-sm tracking-wide">
+            Ver el producto →
+          </a>
         </div>
       </div>
     </section>

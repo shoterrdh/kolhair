@@ -4,9 +4,6 @@ import ProblemSolution from "@/components/ProblemSolution";
 import HowItWorks from "@/components/HowItWorks";
 import ColorSelector from "@/components/ColorSelector";
 import Benefits from "@/components/Benefits";
-import BeforeAfter from "@/components/BeforeAfter";
-import Testimonials from "@/components/Testimonials";
-import PurchaseSection from "@/components/PurchaseSection";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
@@ -19,9 +16,6 @@ export default function Home() {
       <HowItWorks />
       <ColorSelector />
       <Benefits />
-      <BeforeAfter />
-      <Testimonials />
-      <PurchaseSection />
       <FAQ />
       <Footer />
     </main>

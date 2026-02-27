@@ -115,7 +115,7 @@ export default function ColorSelector() {
 
             {/* CTA */}
             <a
-              href="#comprar"
+              href={`/producto?color=${selected.id}`}
               className="btn-primary inline-flex items-center gap-2"
             >
               Elegir tono {selected.name}

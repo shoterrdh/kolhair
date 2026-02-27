@@ -27,7 +27,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#comprar" className="btn-primary bg-cream-50 text-brown-700 hover:bg-cream-100">
+              <a href="/producto" className="btn-primary bg-cream-50 text-brown-700 hover:bg-cream-100">
                 Quiero probarlo
               </a>
               <a href="#como-funciona" className="btn-secondary border-cream-50 text-cream-50 hover:bg-cream-50/10">

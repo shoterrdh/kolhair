@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { products } from "@/lib/products";
 
 type PurchaseType = "onetime" | "subscription";
@@ -11,6 +11,18 @@ export default function PurchaseSection() {
   const [frequency, setFrequency] = useState<Frequency>("monthly");
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+
+  // Pre-select color from URL param ?color=negro
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const color = params.get("color");
+    if (color && products.find((p) => p.id === color)) {
+      setHighlightId(color);
+      const el = document.getElementById(`product-${color}`);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "center" }), 300);
+    }
+  }, []);
 
   async function handleCheckout(productId: string) {
     setLoadingId(productId);
@@ -169,7 +181,12 @@ export default function PurchaseSection() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm border border-cream-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              id={`product-${product.id}`}
+              className={`bg-white rounded-3xl overflow-hidden shadow-sm border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+                highlightId === product.id
+                  ? "border-brown-500 ring-2 ring-brown-400 ring-offset-2 shadow-lg"
+                  : "border-cream-200"
+              }`}
             >
               {/* Color swatch */}
               <div
