@@ -1,5 +1,4 @@
-import ProductHero from "@/components/ProductHero";
-import PurchaseSection from "@/components/PurchaseSection";
+import ProductMain from "@/components/ProductMain";
 import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
@@ -13,8 +12,7 @@ export const metadata = {
 export default function ProductPage() {
   return (
     <main>
-      <ProductHero />
-      <PurchaseSection />
+      <ProductMain />
       <BeforeAfter />
       <Testimonials />
       <Footer />
