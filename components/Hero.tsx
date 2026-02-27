@@ -1,96 +1,98 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-brown-700 via-brown-600 to-brown-400 flex items-center overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-cream-50 blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 rounded-full bg-brown-900 blur-3xl" />
-      </div>
+    <section className="relative bg-[#F2EFEA] overflow-hidden min-h-[88vh] flex items-center">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text */}
-          <div className="text-center lg:text-left">
-            <span className="inline-block bg-cream-50/20 text-cream-50 text-sm font-semibold px-4 py-2 rounded-full mb-6 tracking-widest uppercase">
-              Sin amoníaco · Sin manchas · Sin peluquería
-            </span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-cream-50 leading-tight mb-6">
-              El cabello se tiñe solo.{" "}
-              <span className="italic">Mientras te duchas.</span>
+          {/* LEFT — text */}
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+
+            {/* Badge */}
+            <div className="inline-block border border-brown-700 text-brown-700 text-xs font-bold px-4 py-1.5 rounded-full mb-6 tracking-widest uppercase">
+              #1 Shampoo Colorante Natural
+            </div>
+
+            {/* Headline */}
+            <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl font-black text-brown-900 leading-[1.05] tracking-tight mb-5 uppercase">
+              El cabello<br />
+              se tiñe solo.
             </h1>
 
-            <p className="text-cream-100/80 text-lg sm:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Kolhair cubre tus canas progresivamente con cada lavado.
-              Sin químicos agresivos, sin manchas, sin cambiar nada de
-              lo que ya haces. Úsalo cuando lo necesites.
+            {/* Sub */}
+            <p className="text-gray-600 text-lg sm:text-xl mb-8 max-w-md mx-auto lg:mx-0 leading-relaxed">
+              Cubre tus canas en <strong className="text-brown-800">cada ducha</strong> — sin químicos agresivos, sin manchas, sin cambiar nada de lo que ya haces.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="/producto" className="btn-primary bg-cream-50 text-brown-700 hover:bg-cream-100">
-                Quiero probarlo
-              </a>
-              <a href="#como-funciona" className="btn-secondary border-cream-50 text-cream-50 hover:bg-cream-50/10">
-                Cómo funciona
-              </a>
-            </div>
+            {/* CTA */}
+            <a
+              href="/producto"
+              className="inline-flex items-center gap-3 bg-brown-800 text-cream-50 font-bold text-sm tracking-widest uppercase px-10 py-5 rounded-xl hover:bg-brown-900 transition-colors mb-8"
+            >
+              Ver el producto
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
 
-            {/* Trust badges */}
-            <div className="mt-12 flex flex-wrap gap-6 justify-center lg:justify-start">
-              {[
-                { icon: "🌿", label: "100% Natural" },
-                { icon: "✋", label: "No mancha la piel" },
-                { icon: "🚿", label: "Úsalo en la ducha" },
-                { icon: "⚗️", label: "Sin amoníaco ni peróxido" },
-              ].map((badge) => (
-                <div key={badge.label} className="flex items-center gap-2 text-cream-100/80 text-sm">
-                  <span className="text-lg">{badge.icon}</span>
-                  <span>{badge.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Product visual */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="w-56 h-80 sm:w-64 sm:h-96 bg-gradient-to-b from-cream-50 to-cream-200 rounded-3xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-16 bg-brown-700 rounded-t-3xl flex items-center justify-center">
-                  <span className="text-cream-50 font-serif text-sm tracking-widest uppercase">Kolhair</span>
-                </div>
-                <div className="mt-8 text-center px-6">
-                  <div className="w-16 h-16 rounded-full bg-brown-700 mx-auto mb-4" />
-                  <p className="text-brown-700 font-serif text-xl font-bold">Negro</p>
-                  <p className="text-brown-400 text-xs mt-1">Shampoo Colorante</p>
-                  <p className="text-brown-300 text-xs mt-3 leading-relaxed">
-                    100% Natural<br />Sin Químicos
-                  </p>
-                </div>
-                <div className="absolute bottom-4 text-brown-300 text-xs">300ml</div>
+            {/* Social proof */}
+            <div className="flex items-center gap-3 justify-center lg:justify-start">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                  </svg>
+                ))}
               </div>
-
-              {[
-                { color: "#1C1C1C", top: "10%", right: "-20px" },
-                { color: "#3B1F0E", top: "35%", right: "-30px" },
-                { color: "#7B4F2E", bottom: "35%", right: "-20px" },
-                { color: "#5C3317", bottom: "15%", right: "-30px" },
-              ].map((dot, i) => (
-                <div
-                  key={i}
-                  className="absolute w-10 h-10 rounded-full shadow-lg border-2 border-cream-50/30"
-                  style={{ backgroundColor: dot.color, top: dot.top, bottom: dot.bottom, right: dot.right }}
-                />
-              ))}
+              <span className="text-gray-600 text-sm font-medium">10,000+ Transformaciones</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 80L1440 80L1440 20C1200 70 900 0 720 30C540 60 240 0 0 50L0 80Z" fill="#FAFAF8" />
-        </svg>
+          {/* RIGHT — product visual */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+            <div className="relative w-full max-w-sm lg:max-w-md">
+
+              {/* Main bottle placeholder — swap for <img src="/images/product/hero.jpg" ... /> */}
+              <div className="relative mx-auto w-48 sm:w-56 lg:w-64">
+                <div className="w-full aspect-[3/4] bg-gradient-to-b from-brown-100 to-brown-300 rounded-3xl shadow-2xl flex flex-col items-center justify-center overflow-hidden border border-brown-200">
+                  <div className="absolute top-0 left-0 right-0 h-14 bg-brown-800 flex items-center justify-center">
+                    <span className="text-cream-50 font-serif font-bold text-base tracking-[0.2em] uppercase">Kolhair</span>
+                  </div>
+                  <div className="mt-6 text-center px-4">
+                    <div className="w-14 h-14 rounded-full bg-brown-700 mx-auto mb-3 shadow-inner" />
+                    <p className="text-brown-700 font-bold text-lg font-serif">Negro</p>
+                    <p className="text-brown-400 text-xs mt-1">Shampoo Colorante</p>
+                    <p className="text-brown-300 text-xs mt-2 leading-relaxed">100% Natural · 300ml</p>
+                  </div>
+                  <div className="absolute bottom-4 text-brown-300 text-xs tracking-widest uppercase">Kolhair.com</div>
+                </div>
+
+                {/* Color dots floating */}
+                {[
+                  { hex: "#1C1C1C", label: "Negro",         style: { top: "8%",  right: "-40px" } },
+                  { hex: "#3B1F0E", label: "C. Oscuro",     style: { top: "32%", right: "-52px" } },
+                  { hex: "#7B4F2E", label: "C. Claro",      style: { bottom: "32%", right: "-44px" } },
+                  { hex: "#5C3317", label: "Marrón",        style: { bottom: "10%", right: "-40px" } },
+                ].map((dot) => (
+                  <div
+                    key={dot.label}
+                    className="absolute flex items-center gap-2"
+                    style={dot.style}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-full shadow-lg border-2 border-white/60 flex-shrink-0"
+                      style={{ backgroundColor: dot.hex }}
+                    />
+                    <span className="text-brown-600 text-xs font-medium whitespace-nowrap hidden sm:block">
+                      {dot.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   );
