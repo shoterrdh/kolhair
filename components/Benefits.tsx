@@ -93,7 +93,7 @@ export default function Benefits() {
                   ["Daño capilar", "Mínimo (sin químicos)", "Alto (amoníaco + peróxido)"],
                   ["Discreción del proceso", "Total", "Nula"],
                   ["Control del resultado", "Tú decides la intensidad", "Difícil de controlar"],
-                  ["Se integra a tu rutina", "Es tu rutina", "Requiere rutina separada"],
+                  ["Se integra a tu rutina", "Úsalo cuando quieras", "Requiere rutina separada"],
                 ].map(([feature, kolhair, traditional]) => (
                   <tr key={feature} className="hover:bg-cream-50">
                     <td className="py-3 px-4 text-gray-700">{feature}</td>

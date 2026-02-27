@@ -65,9 +65,9 @@ export default function ProblemSolution() {
             Mismo objetivo. Cero ritual.
           </h3>
           <p className="text-cream-100/80 text-lg max-w-2xl mx-auto leading-relaxed">
-            Kolhair no te pide que cambies nada de lo que ya haces.
-            Solo reemplaza tu shampoo. En cada lavado, los pigmentos naturales
-            cubren las canas de forma progresiva y completamente discreta.
+            Kolhair no reemplaza tu shampoo — lo complementa.
+            Úsalo cuando quieras, tan seguido o tan poco como necesites.
+            Los pigmentos naturales cubren las canas de forma progresiva y discreta.
             <strong className="text-cream-50"> Nadie sabe que lo estás usando. Solo ven que te ves bien.</strong>
           </p>
         </div>

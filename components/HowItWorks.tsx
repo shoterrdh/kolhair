@@ -45,7 +45,7 @@ export default function HowItWorks() {
           <h2 className="section-title mb-4">Cómo funciona Kolhair</h2>
           <p className="section-subtitle mx-auto text-center">
             No necesitas aprender nada nuevo. No necesitas cambiar tu rutina.
-            El único cambio es el shampoo que ya usas.
+            Úsalo cuando lo necesites. Sin dejar tu shampoo de siempre.
           </p>
         </div>
 
