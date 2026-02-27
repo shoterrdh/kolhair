@@ -1,4 +1,6 @@
 import Hero from "@/components/Hero";
+import SecretSection from "@/components/SecretSection";
+import ProblemSolution from "@/components/ProblemSolution";
 import HowItWorks from "@/components/HowItWorks";
 import Colors from "@/components/Colors";
 import Benefits from "@/components/Benefits";
@@ -11,6 +13,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <SecretSection />
+      <ProblemSolution />
       <HowItWorks />
       <Colors />
       <Benefits />

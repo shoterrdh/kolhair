@@ -12,23 +12,23 @@ export default function Hero() {
           {/* Text */}
           <div className="text-center lg:text-left">
             <span className="inline-block bg-cream-50/20 text-cream-50 text-sm font-semibold px-4 py-2 rounded-full mb-6 tracking-widest uppercase">
-              100% Natural · Sin Químicos
+              Sin amoníaco · Sin manchas · Sin peluquería
             </span>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-cream-50 leading-tight mb-6">
-              Cubre tus canas{" "}
-              <span className="italic">mientras te bañas</span>
+              El cabello se tiñe solo.{" "}
+              <span className="italic">Mientras te duchas.</span>
             </h1>
 
             <p className="text-cream-100/80 text-lg sm:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Kolhair es el shampoo que tiñe naturalmente tu cabello mientras te
-              duchas. Sin químicos agresivos, sin manchar la piel. Úsalo cuando
-              quieras.
+              Kolhair cubre tus canas progresivamente con cada lavado.
+              Sin químicos agresivos, sin manchas, sin cambiar nada de
+              lo que ya haces. Solo cambia el shampoo.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a href="#comprar" className="btn-primary bg-cream-50 text-brown-700 hover:bg-cream-100">
-                Comprar ahora
+                Quiero probarlo
               </a>
               <a href="#como-funciona" className="btn-secondary border-cream-50 text-cream-50 hover:bg-cream-50/10">
                 Cómo funciona
@@ -41,9 +41,10 @@ export default function Hero() {
                 { icon: "🌿", label: "100% Natural" },
                 { icon: "✋", label: "No mancha la piel" },
                 { icon: "🚿", label: "Úsalo en la ducha" },
+                { icon: "⚗️", label: "Sin amoníaco ni peróxido" },
               ].map((badge) => (
                 <div key={badge.label} className="flex items-center gap-2 text-cream-100/80 text-sm">
-                  <span className="text-xl">{badge.icon}</span>
+                  <span className="text-lg">{badge.icon}</span>
                   <span>{badge.label}</span>
                 </div>
               ))}
@@ -53,7 +54,6 @@ export default function Hero() {
           {/* Product visual */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              {/* Main bottle mockup */}
               <div className="w-56 h-80 sm:w-64 sm:h-96 bg-gradient-to-b from-cream-50 to-cream-200 rounded-3xl shadow-2xl flex flex-col items-center justify-center relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-16 bg-brown-700 rounded-t-3xl flex items-center justify-center">
                   <span className="text-cream-50 font-serif text-sm tracking-widest uppercase">Kolhair</span>
@@ -69,7 +69,6 @@ export default function Hero() {
                 <div className="absolute bottom-4 text-brown-300 text-xs">300ml</div>
               </div>
 
-              {/* Floating color dots */}
               {[
                 { color: "#1C1C1C", top: "10%", right: "-20px" },
                 { color: "#3B1F0E", top: "35%", right: "-30px" },

@@ -4,34 +4,39 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "¿Kolhair mancha la piel o la ropa?",
+    question: "¿Lo natural de verdad funciona? He probado cosas naturales antes y no funcionaron.",
     answer:
-      "No. Kolhair está formulado para adherirse únicamente al cabello. La piel no absorbe los pigmentos y se limpia fácilmente con agua. Para la ropa, recomendamos aplicarlo antes de ponerse ropa clara por precaución.",
+      "Es la pregunta más honesta que nos hacen. La diferencia está en la ciencia del cabello canoso: cuando el cabello pierde melanina, la fibra se vuelve mucho más receptiva a pigmentos externos. Kolhair usa esa receptividad a su favor. No necesita abrir la cutícula con amoníaco ni oxidar con peróxido porque el cabello canoso ya está 'abierto' para recibir color. El resultado es progresivo — en los primeros 4-6 lavados lo verás claramente.",
   },
   {
-    question: "¿Cuánto dura el color después de aplicarlo?",
+    question: "¿Se va a notar que me estoy tiñendo el cabello?",
     answer:
-      "El color se mantiene entre 1 y 2 semanas dependiendo de con qué frecuencia te lavas el cabello y del tipo de shampoo que uses. Para mantenimiento óptimo, recomendamos aplicar Kolhair 2-3 veces por semana.",
+      "No. Esa es exactamente la razón de ser de Kolhair. El color no entra de golpe como un tinte — se construye lavado a lavado, de forma gradual. Tu entorno ve un cambio sutil y natural, nunca un antes y un después. Es el mismo principio que siguen muchas figuras públicas: siempre igual, sin que nadie sepa cuándo ni cómo.",
   },
   {
-    question: "¿Puedo usar Kolhair si tengo el cabello teñido?",
+    question: "¿Mancha la piel, la ducha o la ropa?",
     answer:
-      "Sí. Kolhair es compatible con cabello previamente teñido. Funciona sobre la fibra capilar natural sin interferir con tintes anteriores.",
+      "No mancha la piel. Los pigmentos botánicos de Kolhair están formulados para adherirse a la proteína del cabello (queratina), no a la piel. Si cae algo en el cuello o la frente, el agua lo limpia sin dejar huella. Para prendas claras, recomendamos escurrir bien el cabello antes de salir de la ducha — igual que con cualquier shampoo de color.",
   },
   {
-    question: "¿Qué color debo elegir?",
+    question: "¿Qué pasa si dejo de usarlo?",
     answer:
-      "Elige el color más cercano a tu tono natural. Si tienes duda entre dos colores, opta por el más oscuro — siempre puedes aclarar, pero la cobertura de canas funciona mejor con tonos similares o ligeramente más oscuros que tu cabello.",
+      "Las canas vuelven gradualmente, exactamente como llegaron. No hay efecto rebote ni cambio brusco. Simplemente el color va saliendo poco a poco con cada lavado, en semanas, no de un día para otro. Tú tienes el control total en todo momento.",
   },
   {
-    question: "¿Cómo se aplica exactamente?",
+    question: "¿Cuántos lavados necesito para ver resultado?",
     answer:
-      "Moja tu cabello, aplica Kolhair como cualquier shampoo, masajea durante 2-3 minutos enfocándote en las zonas con canas y deja actuar 3-5 minutos. Luego enjuaga normalmente. Puedes usar tu acondicionador habitual después.",
+      "Los primeros resultados suelen verse entre el 3.° y 6.° lavado. La cobertura completa se alcanza progresivamente en 2-3 semanas de uso regular. Para mantener el color, muchos usuarios alternan: Kolhair 3-4 veces por semana y su shampoo habitual los demás días.",
   },
   {
-    question: "¿Es seguro para uso frecuente?",
+    question: "¿Qué color elijo si no estoy seguro?",
     answer:
-      "Sí. La fórmula natural de Kolhair está diseñada para uso frecuente sin dañar la fibra capilar. Además de cubrir canas, sus ingredientes naturales nutren e hidratan el cabello.",
+      "Elige el tono más cercano a tu color natural. Si dudas entre dos, el más oscuro da mejor cobertura de canas — siempre es más fácil bajar un poco la intensidad (lavando con tu shampoo habitual) que subir. Si tu cabello era Negro o Castaño Oscuro antes de que aparecieran las canas, empieza por ahí.",
+  },
+  {
+    question: "¿Puedo usarlo si ya tengo el cabello teñido con tinte tradicional?",
+    answer:
+      "Sí. Kolhair es compatible con cabello previamente teñido. No interfiere con tintes oxidativos anteriores. Lo que sí puede ocurrir: si tu tinte base tiene tonos muy diferentes al color Kolhair que eliges, el resultado en las raíces y las canas puede variar ligeramente. Para resultados más consistentes, úsalo después de que tu tinte anterior vaya saliendo.",
   },
 ];
 

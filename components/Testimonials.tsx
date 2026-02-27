@@ -1,27 +1,33 @@
 const testimonials = [
   {
+    name: "Carlos M.",
+    age: "54 años",
+    profile: "Empresario",
+    color: "Negro",
+    gender: "M",
+    rating: 5,
+    text: "Yo nunca hubiera ido a una barbería a teñirme el pelo. Eso no va conmigo. Pero mis canas ya me estaban molestando. Kolhair fue la solución perfecta: lo uso en la ducha, nadie lo sabe, y el resultado es completamente natural. Mis socios me preguntaron si me había ido de vacaciones.",
+    avatar: "CM",
+  },
+  {
     name: "María G.",
     age: "52 años",
+    profile: "Docente",
     color: "Castaño Oscuro",
+    gender: "F",
     rating: 5,
-    text: "Llevaba años tiñéndome en la peluquería cada mes. Con Kolhair lo hago yo misma en la ducha y el resultado es increíble. Mis amigas me preguntan qué hago que me veo tan bien.",
+    text: "Llevaba años en el ciclo del tinte: salón cada mes, manchas, olor, cabello cada vez más seco. Con Kolhair lo hago yo sola en la ducha y el resultado es increíble. Lo que más me sorprendió: no mancha absolutamente nada. Mis amigas me preguntan qué estoy haciendo diferente.",
     avatar: "MG",
   },
   {
     name: "Roberto S.",
     age: "47 años",
-    color: "Negro",
+    profile: "Ejecutivo de ventas",
+    color: "Castaño Claro",
+    gender: "M",
     rating: 5,
-    text: "Como hombre, ir a teñirme era incómodo. Kolhair lo cambió todo. Me lo aplico cuando me ducho, no mancha nada y nadie nota que uso algo. Parece mi color natural.",
+    text: "Mi trabajo requiere que me vea presentable todo el tiempo. Las canas me hacían ver mayor de lo que soy y me incomodaba la idea de ir a teñirme. Kolhair resolvió el problema sin drama. Es discreto, progresivo y funciona. Cuatro meses usándolo y no lo dejo.",
     avatar: "RS",
-  },
-  {
-    name: "Carmen L.",
-    age: "58 años",
-    color: "Marrón",
-    rating: 5,
-    text: "Lo que más me gustó es que no mancha la piel. Con otros productos siempre terminaba con manchas en la frente. Kolhair es diferente, se va solo con el agua.",
-    avatar: "CL",
   },
 ];
 
@@ -31,13 +37,13 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brown-200 text-sm font-semibold tracking-widest uppercase mb-3 block">
-            Lo que dicen nuestros clientes
+            Resultados reales
           </span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-cream-50 leading-tight mb-4">
-            Resultados que hablan solos
+            &ldquo;Nadie sabe que lo uso.<br />Solo ven que me veo bien.&rdquo;
           </h2>
-          <p className="text-cream-100/70 text-lg max-w-2xl mx-auto">
-            Miles de personas ya cubren sus canas naturalmente con Kolhair.
+          <p className="text-cream-100/70 text-lg max-w-xl mx-auto">
+            Hombres y mujeres que encontraron la solución discreta que buscaban.
           </p>
         </div>
 
@@ -45,7 +51,7 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-brown-600/50 backdrop-blur rounded-3xl p-8 border border-brown-500/30"
+              className="bg-brown-600/50 backdrop-blur rounded-3xl p-8 border border-brown-500/30 flex flex-col"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
@@ -56,18 +62,18 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-cream-100/90 leading-relaxed mb-6 italic">
+              <p className="text-cream-100/90 leading-relaxed mb-6 italic flex-1">
                 &ldquo;{t.text}&rdquo;
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brown-400 flex items-center justify-center text-cream-50 font-semibold text-sm">
+                <div className="w-10 h-10 rounded-full bg-brown-400 flex items-center justify-center text-cream-50 font-semibold text-sm flex-shrink-0">
                   {t.avatar}
                 </div>
                 <div>
                   <p className="text-cream-50 font-semibold text-sm">{t.name}</p>
                   <p className="text-brown-200 text-xs">
-                    {t.age} · Usa tono {t.color}
+                    {t.age} · {t.profile} · Tono {t.color}
                   </p>
                 </div>
               </div>
