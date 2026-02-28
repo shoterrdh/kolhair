@@ -11,6 +11,19 @@
   animation: marquee 20s linear infinite;
 }
 
+@keyframes carousel-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-carousel {
+  animation: carousel-scroll 45s linear infinite;
+}
+
+.animate-carousel:hover {
+  animation-play-state: paused;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
