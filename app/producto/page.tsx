@@ -16,10 +16,10 @@ export default function ProductPage() {
   return (
     <main>
       <ProductMain />
-      <ProductDescription />
       <PressBar />
-      <UsvsThem />
       <BeforeAfter />
+      <ProductDescription />
+      <UsvsThem />
       <Testimonials />
       <Footer />
     </main>

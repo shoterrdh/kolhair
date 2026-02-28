@@ -1,20 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { products } from "@/lib/products";
 
 type PurchaseType = "subscription" | "onetime";
 type Frequency = "monthly" | "bimonthly";
 type InfoTab = "beneficios" | "como-usar";
 
-const INFO_TABS: Record<InfoTab, { label: string; items: string[] }> = {
+const INFO_TABS: Record<InfoTab, { label: string; items: React.ReactNode[] }> = {
   beneficios: {
     label: "Beneficios",
     items: [
-      "Cubre canas progresivamente sin químicos agresivos",
-      "No mancha la piel ni la ropa",
-      "Apto para uso diario sin dañar el cabello",
       "Resultado 100% natural desde el primer uso",
+      <>Uso progresivo <strong>SIN</strong> químicos que dañan tu pelo y cuero cabelludo</>,
+      "Nadie nota que lo usas — solo ven el resultado",
+      "No mancha la piel ni la ropa",
     ],
   },
   "como-usar": {
@@ -27,6 +27,53 @@ const INFO_TABS: Record<InfoTab, { label: string; items: string[] }> = {
     ],
   },
 };
+
+const ACCORDIONS = [
+  {
+    id: "descripcion",
+    label: "Descripción",
+    items: [
+      "Cubre canas progresivamente con cada ducha",
+      "Sin amoníaco ni químicos agresivos",
+      "No mancha la piel ni la ropa",
+      "Apto para uso diario sin dañar el cabello",
+      "Resultado natural acumulativo desde el primer uso",
+    ],
+  },
+  {
+    id: "envios",
+    label: "Envíos",
+    items: [
+      "De 5 a 8 días hábiles",
+      "Incluye número de seguimiento",
+      "Envío GRATIS disponible hoy",
+      "Para más información visita nuestra política de envíos",
+    ],
+  },
+  {
+    id: "garantias",
+    label: "Garantías",
+    items: [
+      "Satisfacción garantizada durante 30 días",
+      "Prueba el producto sin compromiso",
+      "Contacta con soporte antes de 30 días para cualquier cambio",
+      "Para más información visita nuestra política de cambios",
+    ],
+  },
+];
+
+const MINI_REVIEWS = [
+  { name: "Carlos M.", text: "Mis socios pensaron que me fui de vacaciones." },
+  { name: "María G.", text: "No mancha nada. Resultado increíble." },
+  { name: "Diego M.", text: "Tres meses sin preocuparme por nada." },
+  { name: "Roberto S.", text: "Cuatro meses usándolo. No lo dejo." },
+  { name: "Ana P.", text: "Más sano que con el tinte anterior." },
+  { name: "Claudia V.", text: "Me lo recomendó mi hermana. Cambió mi rutina." },
+  { name: "Fernando L.", text: "El resultado es completamente natural." },
+  { name: "Patricia M.", text: "Simple. Sin olor. Sin manchar. Perfecto." },
+  { name: "Andrés H.", text: "Las canas prematuras ya no me dan inseguridad." },
+  { name: "Miguel R.", text: "Pensé que era demasiado tarde. No lo era." },
+];
 
 const BENEFITS = [
   "Cubre canas desde el primer uso",
@@ -50,6 +97,12 @@ export default function ProductMain() {
   const [purchaseType, setPurchaseType] = useState<PurchaseType>("subscription");
   const [frequency, setFrequency] = useState<Frequency>("monthly");
   const [activeTab, setActiveTab] = useState<InfoTab>("beneficios");
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [country, setCountry] = useState<string | null>(null);
+  const dragRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,6 +115,14 @@ export default function ProductMain() {
     if (color && products.find((p) => p.id === color)) {
       setSelectedId(color);
     }
+  }, []);
+
+
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then((r) => r.json())
+      .then((d) => { if (d.country_name) setCountry(d.country_name); })
+      .catch(() => {});
   }, []);
 
   async function handleCheckout() {
@@ -234,6 +295,55 @@ export default function ProductMain() {
 
           {/* ── RIGHT: Purchase flow ── */}
           <div>
+
+            {/* ── Mini reviews strip ── */}
+            <div className="mb-4 -mx-1 overflow-hidden">
+              <div
+                ref={dragRef}
+                className="overflow-x-scroll scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                onMouseDown={(e) => {
+                  isDragging.current = true;
+                  dragStartX.current = e.clientX;
+                  dragScrollLeft.current = dragRef.current?.scrollLeft ?? 0;
+                }}
+                onMouseMove={(e) => {
+                  if (!isDragging.current || !dragRef.current) return;
+                  dragRef.current.scrollLeft = dragScrollLeft.current - (e.clientX - dragStartX.current);
+                }}
+                onMouseUp={() => { isDragging.current = false; }}
+                onMouseLeave={() => { isDragging.current = false; }}
+              >
+                <div className="flex gap-2 w-max px-1 pb-1">
+                  {[...MINI_REVIEWS, ...MINI_REVIEWS].map((r, i) => (
+                    <div key={i} className="flex-shrink-0 w-56 bg-white border border-cream-200 rounded-xl p-3 shadow-sm">
+                      <div className="flex gap-0.5 mb-1">
+                        {Array.from({ length: 5 }).map((_, j) => (
+                          <svg key={j} className="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <p className="text-[10px] text-gray-600 italic leading-relaxed mb-1.5 line-clamp-2">&ldquo;{r.text}&rdquo;</p>
+                      <p className="text-[10px] font-semibold text-brown-700">{r.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Rating summary */}
+            <a href="#resenas" className="flex items-center gap-2 mb-3 w-fit group">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-sm font-bold text-brown-800">4.7</span>
+              <span className="text-xs text-gray-400 group-hover:text-brown-500 transition-colors underline underline-offset-2 decoration-dotted">· 10,000+ reseñas</span>
+            </a>
+
             {/* Title */}
             <h1 className="font-serif text-4xl sm:text-5xl font-bold text-brown-800 mb-1">
               Kolhair
@@ -297,76 +407,53 @@ export default function ProductMain() {
             </div>
 
             {/* ── Purchase box ── */}
-            <div className="rounded-2xl overflow-hidden border border-brown-200 mb-5">
+            <div className="rounded-xl overflow-hidden border border-brown-200 mb-4">
 
-              <div className="bg-brown-800 text-cream-50 text-center py-2.5">
-                <span className="text-xs font-bold tracking-widest uppercase">Oferta limitada</span>
+              <div className="bg-brown-800 text-cream-50 text-center py-1.5">
+                <span className="text-[10px] font-bold tracking-widest uppercase">Oferta limitada</span>
               </div>
 
               {/* Subscription option */}
               <div
                 onClick={() => setPurchaseType("subscription")}
-                className={`flex items-center gap-4 p-5 cursor-pointer transition-colors ${
+                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors ${
                   isSubscription ? "bg-cream-100" : "bg-white hover:bg-cream-50"
                 }`}
               >
-                <div
-                  className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all ${
-                    isSubscription ? "border-brown-700" : "border-gray-300"
-                  }`}
-                >
-                  {isSubscription && <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />}
+                <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all ${isSubscription ? "border-brown-700" : "border-gray-300"}`}>
+                  {isSubscription && <div className="w-2 h-2 rounded-full bg-brown-700" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-semibold text-brown-800 text-sm">Suscripción</span>
-                    <span className="bg-brown-700 text-cream-50 text-xs px-2 py-0.5 rounded-full font-bold whitespace-nowrap">
-                      Ahorra $15
-                    </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-semibold text-brown-800 text-xs">Suscripción</span>
+                    <span className="bg-brown-700 text-cream-50 text-[10px] px-1.5 py-px rounded-full font-bold whitespace-nowrap">Ahorra $15</span>
                   </div>
-                  <p className="text-gray-500 text-xs">
-                    $40 primera entrega · luego <strong>$30/mes</strong>
-                  </p>
+                  <p className="text-gray-400 text-[10px]">$40 primera · luego <strong className="text-gray-600">$30/mes</strong></p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-gray-400 text-xs line-through">$45.00</p>
-                  <p className="font-bold text-brown-800 text-xl leading-tight">
-                    $30.00<span className="text-xs font-normal text-gray-500">/mes</span>
-                  </p>
+                  <p className="text-gray-400 text-[10px] line-through">$45.00</p>
+                  <p className="font-bold text-brown-800 text-base leading-tight">$30<span className="text-[10px] font-normal text-gray-500">/mes</span></p>
                 </div>
               </div>
 
               {/* Frequency selector */}
               {isSubscription && (
-                <div className="px-5 pb-4 bg-cream-100 border-t border-cream-200">
-                  <p className="text-xs text-brown-400 uppercase tracking-widest mb-3 pt-3">
-                    Frecuencia de entrega
-                  </p>
-                  <div className="flex gap-3">
+                <div className="px-4 pb-3 bg-cream-100 border-t border-cream-200 flex items-center gap-2 pt-2">
+                  <span className="text-[10px] text-brown-400 uppercase tracking-wider whitespace-nowrap">Entrega:</span>
+                  <div className="flex gap-2 flex-1">
                     <button
                       onClick={() => setFrequency("monthly")}
-                      className={`flex-1 py-2 rounded-xl text-xs font-semibold border transition-all ${
-                        frequency === "monthly"
-                          ? "bg-brown-700 text-cream-50 border-brown-700"
-                          : "border-brown-200 text-brown-500 hover:border-brown-400"
-                      }`}
+                      className={`flex-1 py-1 rounded-lg text-[10px] font-semibold border transition-all ${frequency === "monthly" ? "bg-brown-700 text-cream-50 border-brown-700" : "border-brown-200 text-brown-500 hover:border-brown-400"}`}
                     >
                       Mensual
                     </button>
                     <button
                       onClick={() => setFrequency("bimonthly")}
-                      className={`flex-1 py-2 rounded-xl text-xs font-semibold border transition-all ${
-                        frequency === "bimonthly"
-                          ? "bg-brown-700 text-cream-50 border-brown-700"
-                          : "border-brown-200 text-brown-500 hover:border-brown-400"
-                      }`}
+                      className={`flex-1 py-1 rounded-lg text-[10px] font-semibold border transition-all ${frequency === "bimonthly" ? "bg-brown-700 text-cream-50 border-brown-700" : "border-brown-200 text-brown-500 hover:border-brown-400"}`}
                     >
                       Cada 2 meses
                     </button>
                   </div>
-                  <p className="text-xs text-gray-400 mt-2 text-center">
-                    Cancela o pausa cuando quieras · Sin penalizaciones
-                  </p>
                 </div>
               )}
 
@@ -375,24 +462,18 @@ export default function ProductMain() {
               {/* One-time option */}
               <div
                 onClick={() => setPurchaseType("onetime")}
-                className={`flex items-center gap-4 p-5 cursor-pointer transition-colors ${
+                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors ${
                   !isSubscription ? "bg-cream-100" : "bg-white hover:bg-cream-50"
                 }`}
               >
-                <div
-                  className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all ${
-                    !isSubscription ? "border-brown-700" : "border-gray-300"
-                  }`}
-                >
-                  {!isSubscription && <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />}
+                <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 flex items-center justify-center transition-all ${!isSubscription ? "border-brown-700" : "border-gray-300"}`}>
+                  {!isSubscription && <div className="w-2 h-2 rounded-full bg-brown-700" />}
                 </div>
                 <div className="flex-1">
-                  <p className="font-semibold text-brown-800 text-sm">Compra única</p>
-                  <p className="text-gray-500 text-xs">Sin compromiso · Compra cuando quieras</p>
+                  <p className="font-semibold text-brown-800 text-xs">Compra única</p>
+                  <p className="text-gray-400 text-[10px]">Sin compromiso · Pago único</p>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <p className="font-bold text-brown-800 text-xl">$45.00</p>
-                </div>
+                <p className="font-bold text-brown-800 text-base">$45.00</p>
               </div>
             </div>
 
@@ -456,11 +537,52 @@ export default function ProductMain() {
               )}
             </button>
 
+            {/* Envío gratis geo */}
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.491 4.491 0 0 1-3.497-1.307 4.491 4.491 0 0 1-1.307-3.497A4.49 4.49 0 0 1 2.25 12a4.49 4.49 0 0 1 1.549-3.397 4.491 4.491 0 0 1 1.307-3.497 4.491 4.491 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
+              </svg>
+              <p className="text-sm text-gray-600">
+                <span className="font-semibold text-green-600">Envío GRATIS</span>
+                {" "}a todo{" "}
+                <span className="font-semibold text-gray-700">{country ?? "el mundo"}</span>
+              </p>
+            </div>
+
             {/* Trust badges */}
-            <div className="mt-5 flex flex-wrap justify-center gap-5 text-xs text-gray-400">
+            <div className="mt-3 flex flex-wrap justify-center gap-5 text-xs text-gray-400">
               <span className="flex items-center gap-1.5">🔒 Pago 100% seguro</span>
-              <span className="flex items-center gap-1.5">📦 Envío rápido</span>
               <span className="flex items-center gap-1.5">✅ Cancela cuando quieras</span>
+            </div>
+
+            {/* Accordions */}
+            <div className="mt-6 border-t border-cream-200">
+              {ACCORDIONS.map((acc) => (
+                <div key={acc.id} className="border-b border-cream-200">
+                  <button
+                    onClick={() => setOpenAccordion(openAccordion === acc.id ? null : acc.id)}
+                    className="w-full flex items-center justify-between py-4 text-sm font-semibold text-brown-800 hover:text-brown-600 transition-colors"
+                  >
+                    {acc.label}
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-200 ${openAccordion === acc.id ? "rotate-180" : ""}`}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {openAccordion === acc.id && (
+                    <ul className="pb-4 space-y-2">
+                      {acc.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-brown-400 flex-shrink-0 mt-1.5" />
+                          <span className="text-xs text-gray-600 leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
