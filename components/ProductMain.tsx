@@ -5,6 +5,28 @@ import { products } from "@/lib/products";
 
 type PurchaseType = "subscription" | "onetime";
 type Frequency = "monthly" | "bimonthly";
+type InfoTab = "beneficios" | "como-usar";
+
+const INFO_TABS: Record<InfoTab, { label: string; items: string[] }> = {
+  beneficios: {
+    label: "Beneficios",
+    items: [
+      "Cubre canas progresivamente sin químicos agresivos",
+      "No mancha la piel ni la ropa",
+      "Apto para uso diario sin dañar el cabello",
+      "Resultado 100% natural desde el primer uso",
+    ],
+  },
+  "como-usar": {
+    label: "Cómo usar",
+    items: [
+      "Aplica en cabello mojado como tu shampoo habitual",
+      "Deja actuar 3–5 minutos en la ducha",
+      "Enjuaga y seca normalmente",
+      "Repite en cada lavado para color acumulativo",
+    ],
+  },
+};
 
 const BENEFITS = [
   "Cubre canas desde el primer uso",
@@ -27,6 +49,7 @@ export default function ProductMain() {
   const [activeThumb, setActiveThumb] = useState(0);
   const [purchaseType, setPurchaseType] = useState<PurchaseType>("subscription");
   const [frequency, setFrequency] = useState<Frequency>("monthly");
+  const [activeTab, setActiveTab] = useState<InfoTab>("beneficios");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -371,6 +394,35 @@ export default function ProductMain() {
                   <p className="font-bold text-brown-800 text-xl">$45.00</p>
                 </div>
               </div>
+            </div>
+
+            {/* ── Info tabs: Beneficios / Cómo usar ── */}
+            <div className="mb-5">
+              <div className="flex border-b border-cream-200 mb-3">
+                {(Object.keys(INFO_TABS) as InfoTab[]).map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-1 py-2.5 text-xs font-semibold tracking-wide transition-colors ${
+                      activeTab === tab
+                        ? "text-brown-800 border-b-2 border-brown-700 -mb-px"
+                        : "text-gray-400 hover:text-brown-500"
+                    }`}
+                  >
+                    {INFO_TABS[tab].label}
+                  </button>
+                ))}
+              </div>
+              <ul className="space-y-2">
+                {INFO_TABS[activeTab].items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <svg className="w-3.5 h-3.5 text-brown-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-xs text-gray-600 leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Error */}
