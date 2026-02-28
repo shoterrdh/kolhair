@@ -30,15 +30,15 @@ const transformations = [
 
 export default function BeforeAfter() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-14 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="text-brown-400 text-sm font-semibold tracking-widest uppercase mb-3 block">
             Transformaciones reales
           </span>
-          <h2 className="section-title mb-4">
+          <h2 className="section-title mb-3">
             El antes y el después<br />
             <span className="italic">hablan solos</span>
           </h2>
@@ -47,23 +47,23 @@ export default function BeforeAfter() {
           </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Carousel on mobile / grid on desktop */}
+        <div className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-smooth pb-4 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0">
           {transformations.map((t) => (
-            <div key={t.id} className="rounded-3xl overflow-hidden border border-cream-200 shadow-sm hover:shadow-lg transition-shadow">
-
+            <div
+              key={t.id}
+              className="snap-start flex-shrink-0 w-[82vw] sm:w-[60vw] md:w-auto rounded-3xl overflow-hidden border border-cream-200 shadow-sm hover:shadow-lg transition-shadow"
+            >
               {/* Before / After images */}
               <div className="grid grid-cols-2">
                 {/* ANTES */}
                 <div className="relative">
-                  {/* Swap for <img src="/images/before-after/before-X.jpg" ... /> when images arrive */}
                   <div
-                    className="h-64 w-full flex items-end justify-center pb-4"
+                    className="h-56 w-full"
                     style={{
                       background: `linear-gradient(180deg, ${t.beforeBg}55 0%, ${t.beforeBg} 100%)`,
                     }}
                   >
-                    {/* Simulated gray hair texture */}
                     <div
                       className="absolute inset-0 opacity-30"
                       style={{
@@ -78,7 +78,6 @@ export default function BeforeAfter() {
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     Antes
                   </div>
-                  {/* Placeholder badge */}
                   <div className="absolute bottom-3 left-0 right-0 text-center">
                     <span className="text-white/50 text-xs">foto próximamente</span>
                   </div>
@@ -87,12 +86,11 @@ export default function BeforeAfter() {
                 {/* DESPUÉS */}
                 <div className="relative">
                   <div
-                    className="h-64 w-full"
+                    className="h-56 w-full"
                     style={{
                       background: `linear-gradient(180deg, ${t.afterBg}88 0%, ${t.afterBg} 100%)`,
                     }}
                   >
-                    {/* Simulated hair texture */}
                     <div
                       className="absolute inset-0 opacity-20"
                       style={{
@@ -107,7 +105,6 @@ export default function BeforeAfter() {
                   <div className="absolute top-3 right-3 bg-brown-700/90 backdrop-blur text-cream-50 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     Después
                   </div>
-                  {/* Placeholder badge */}
                   <div className="absolute bottom-3 left-0 right-0 text-center">
                     <span className="text-white/30 text-xs">foto próximamente</span>
                   </div>
@@ -115,8 +112,8 @@ export default function BeforeAfter() {
               </div>
 
               {/* Caption */}
-              <div className="p-6 bg-cream-50">
-                <p className="text-gray-700 italic text-sm leading-relaxed mb-4">
+              <div className="p-5 bg-cream-50">
+                <p className="text-gray-700 italic text-sm leading-relaxed mb-3">
                   {t.caption}
                 </p>
                 <div className="flex items-center justify-between">
@@ -137,8 +134,12 @@ export default function BeforeAfter() {
           ))}
         </div>
 
-        {/* Bottom note */}
-        <p className="text-center text-gray-400 text-sm mt-10">
+        {/* Scroll hint — mobile only */}
+        <p className="md:hidden text-center text-gray-400 text-xs mt-3">
+          ← Desliza para ver más →
+        </p>
+
+        <p className="hidden md:block text-center text-gray-400 text-sm mt-8">
           Fotos reales de usuarios · Sin edición ni filtros de color
         </p>
       </div>
