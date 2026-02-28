@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+
 
 type Gender = "M" | "F";
 
@@ -19,15 +20,33 @@ const transformations = [
 
 type Transformation = typeof transformations[0];
 
+const CARD_WIDTH = 220; // w-52 (208px) + gap-3 (12px)
+
 export default function BeforeAfter() {
   const [filter, setFilter] = useState<Gender>("M");
   const [selected, setSelected] = useState<Transformation | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const filtered = transformations.filter((t) => t.gender === filter);
   const all = [...filtered, ...filtered];
 
+  // Reset scroll when filter changes
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollLeft = 0;
+  }, [filter]);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const half = el.scrollWidth / 2;
+    let next = el.scrollLeft + dir * CARD_WIDTH;
+    if (next >= half) next -= half;
+    if (next < 0) next += half;
+    el.scrollTo({ left: next, behavior: "smooth" });
+  };
+
   return (
-    <section className="py-10 bg-white overflow-hidden">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="text-center">
           <span className="text-brown-400 text-sm font-semibold tracking-widest uppercase mb-2 block">
@@ -61,18 +80,21 @@ export default function BeforeAfter() {
 
       {/* Carousel */}
       <div className="relative">
+        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="overflow-hidden">
-          <div key={filter} className="flex gap-3 animate-carousel w-max px-4">
+        <div
+          ref={scrollRef}
+          className="overflow-x-scroll scrollbar-hide px-4"
+        >
+          <div className="flex gap-3 w-max py-2">
             {all.map((t, i) => (
               <button
                 key={`${t.id}-${i}`}
                 onClick={() => setSelected(t)}
-                className="flex-shrink-0 w-52 rounded-2xl overflow-hidden border border-cream-200 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer text-left"
+                className="flex-shrink-0 w-52 rounded-2xl overflow-hidden border border-cream-200 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all text-left"
               >
-                {/* Before / After images */}
                 <div className="grid grid-cols-2">
                   <div className="relative">
                     <div className="h-36 w-full" style={{ background: `linear-gradient(180deg, ${t.beforeBg}55 0%, ${t.beforeBg} 100%)` }}>
@@ -87,8 +109,6 @@ export default function BeforeAfter() {
                     <div className="absolute top-1.5 right-1.5 bg-brown-700/90 text-cream-50 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Después</div>
                   </div>
                 </div>
-
-                {/* Info */}
                 <div className="px-3 py-2.5 bg-cream-50">
                   <p className="text-gray-600 italic text-[10px] leading-relaxed mb-1.5 line-clamp-2">{t.caption}</p>
                   <div className="flex items-center justify-between">
@@ -111,11 +131,32 @@ export default function BeforeAfter() {
         </div>
       </div>
 
+      {/* Arrow controls */}
+      <div className="flex justify-center items-center gap-4 mt-5">
+        <button
+          onClick={() => scrollByCard(-1)}
+          className="w-10 h-10 rounded-full border border-brown-200 flex items-center justify-center text-brown-600 hover:bg-brown-800 hover:text-cream-50 hover:border-brown-800 transition-all"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+        <span className="text-xs text-gray-400">Navega con las flechas</span>
+        <button
+          onClick={() => scrollByCard(1)}
+          className="w-10 h-10 rounded-full border border-brown-200 flex items-center justify-center text-brown-600 hover:bg-brown-800 hover:text-cream-50 hover:border-brown-800 transition-all"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+
       <p className="text-center text-gray-400 text-[11px] mt-4">
         Fotos reales de usuarios · Sin edición ni filtros de color
       </p>
 
-      {/* ── Modal / Lightbox ── */}
+      {/* Modal */}
       {selected && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
@@ -125,7 +166,6 @@ export default function BeforeAfter() {
             className="relative bg-white rounded-3xl overflow-hidden shadow-2xl w-full max-w-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close button */}
             <button
               onClick={() => setSelected(null)}
               className="absolute top-4 right-4 z-10 w-8 h-8 bg-black/30 hover:bg-black/50 text-white rounded-full flex items-center justify-center transition-colors"
@@ -134,30 +174,22 @@ export default function BeforeAfter() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
             </button>
-
-            {/* Before / After large */}
             <div className="grid grid-cols-2">
               <div className="relative">
                 <div className="h-72 w-full" style={{ background: `linear-gradient(180deg, ${selected.beforeBg}55 0%, ${selected.beforeBg} 100%)` }}>
                   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `repeating-linear-gradient(175deg, transparent 0px, transparent 2px, rgba(255,255,255,0.4) 2px, rgba(255,255,255,0.4) 3px)` }} />
                 </div>
                 <div className="absolute top-3 left-3 bg-white/90 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Antes</div>
-                <div className="absolute bottom-3 left-0 right-0 text-center">
-                  <span className="text-white/40 text-xs">foto próximamente</span>
-                </div>
+                <div className="absolute bottom-3 left-0 right-0 text-center"><span className="text-white/40 text-xs">foto próximamente</span></div>
               </div>
               <div className="relative">
                 <div className="h-72 w-full" style={{ background: `linear-gradient(180deg, ${selected.afterBg}88 0%, ${selected.afterBg} 100%)` }}>
                   <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(175deg, transparent 0px, transparent 2px, rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 3px)` }} />
                 </div>
                 <div className="absolute top-3 right-3 bg-brown-700/90 text-cream-50 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Después</div>
-                <div className="absolute bottom-3 left-0 right-0 text-center">
-                  <span className="text-white/30 text-xs">foto próximamente</span>
-                </div>
+                <div className="absolute bottom-3 left-0 right-0 text-center"><span className="text-white/30 text-xs">foto próximamente</span></div>
               </div>
             </div>
-
-            {/* Info */}
             <div className="p-6 bg-cream-50">
               <div className="flex gap-1 mb-3">
                 {Array.from({ length: 5 }).map((_, i) => (
