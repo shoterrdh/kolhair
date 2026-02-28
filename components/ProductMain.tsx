@@ -67,44 +67,95 @@ export default function ProductMain() {
           {/* ── LEFT: Preview + thumbnails (sticky) ── */}
           <div className="lg:sticky lg:top-24">
 
-            {/* Main preview image */}
+            {/* Main preview image — changes based on active thumbnail */}
             <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
 
-              {/* Split: left = before (gray/canas), right = after (color) */}
-              <div className="absolute inset-0 flex">
-                <div
-                  className="w-1/2 h-full"
-                  style={{
-                    background: "linear-gradient(160deg, #B8B8B8 0%, #8A8A8A 55%, #C0C0C0 100%)",
-                  }}
-                />
-                <div
-                  className="w-1/2 h-full transition-all duration-700"
-                  style={{
-                    background: `linear-gradient(160deg, ${selected.colorHex} 0%, ${selected.colorLight} 55%, #C49A6C 100%)`,
-                  }}
-                />
-              </div>
+              {/* ── View 0: Antes / Después split ── */}
+              {activeThumb === 0 && (
+                <>
+                  <div className="absolute inset-0 flex">
+                    <div className="w-1/2 h-full" style={{ background: "linear-gradient(160deg, #B8B8B8 0%, #8A8A8A 55%, #C0C0C0 100%)" }} />
+                    <div className="w-1/2 h-full transition-all duration-700" style={{ background: `linear-gradient(160deg, ${selected.colorHex} 0%, ${selected.colorLight} 55%, #C49A6C 100%)` }} />
+                  </div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/50 z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
+                  <div className="absolute bottom-6 left-0 right-0 flex z-10">
+                    <div className="w-1/2 px-5">
+                      <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Antes</p>
+                      <p className="text-white/80 font-serif text-lg font-semibold">Con canas</p>
+                    </div>
+                    <div className="w-1/2 px-5 text-right">
+                      <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Después</p>
+                      <p className="text-cream-50 font-serif text-lg font-bold">{selected.name}</p>
+                    </div>
+                  </div>
+                </>
+              )}
 
-              {/* Hair texture overlay */}
+              {/* ── View 1: El frasco ── */}
+              {activeThumb === 1 && (
+                <>
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(160deg, ${selected.colorHex} 0%, #1A0A05 100%)` }} />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                    <div className="w-20 h-36 rounded-2xl border-2 border-white/30 flex items-center justify-center" style={{ background: `linear-gradient(180deg, ${selected.colorLight}88, ${selected.colorHex})` }}>
+                      <span className="text-white/60 text-xs font-bold tracking-widest rotate-0 text-center leading-tight px-2">KOLHAIR</span>
+                    </div>
+                    <p className="text-white/50 text-xs uppercase tracking-widest">200ml</p>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Producto</p>
+                    <p className="text-cream-50 font-serif text-lg font-bold">Tono {selected.name}</p>
+                  </div>
+                </>
+              )}
+
+              {/* ── View 2: En la ducha ── */}
+              {activeThumb === 2 && (
+                <>
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #4A7FA5 0%, #1B4F72 55%, #0D2D45 100%)" }} />
+                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(90deg, transparent 0px, transparent 8px, rgba(255,255,255,0.15) 8px, rgba(255,255,255,0.15) 9px)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Modo de uso</p>
+                    <p className="text-cream-50 font-serif text-lg font-bold">3–5 min en la ducha</p>
+                  </div>
+                </>
+              )}
+
+              {/* ── View 3: Resultado ── */}
+              {activeThumb === 3 && (
+                <>
+                  <div className="absolute inset-0 transition-all duration-700" style={{ background: `linear-gradient(160deg, ${selected.colorHex} 0%, ${selected.colorLight} 60%, #C49A6C 100%)` }} />
+                  <div className="absolute inset-0 opacity-25" style={{ backgroundImage: "repeating-linear-gradient(170deg, transparent 0px, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Resultado</p>
+                    <p className="text-cream-50 font-serif text-lg font-bold">{selected.name} — cobertura total</p>
+                  </div>
+                </>
+              )}
+
+              {/* ── View 4: Natural / Ingredientes ── */}
+              {activeThumb === 4 && (
+                <>
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #6B4C2A 0%, #3D2008 55%, #1A0D02 100%)" }} />
+                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 40%, rgba(180,120,60,0.4) 0%, transparent 50%), radial-gradient(circle at 70% 60%, rgba(100,60,20,0.3) 0%, transparent 50%)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
+                    <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Formulación</p>
+                    <p className="text-cream-50 font-serif text-lg font-bold">100% pigmentos botánicos</p>
+                  </div>
+                </>
+              )}
+
+              {/* Hair texture overlay (all views) */}
               <div
-                className="absolute inset-0 opacity-20"
+                className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
-                  backgroundImage: `repeating-linear-gradient(
-                    170deg,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(255,255,255,0.15) 3px,
-                    rgba(255,255,255,0.15) 4px
-                  )`,
+                  backgroundImage: `repeating-linear-gradient(170deg, transparent 0px, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px)`,
                 }}
               />
-
-              {/* Divider line */}
-              <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/50 z-10" />
-
-              {/* Bottom dark gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
 
               {/* Price per use badge */}
               <div className="absolute top-5 left-5 bg-white rounded-2xl px-4 py-3 shadow-xl text-center min-w-[80px]">
@@ -118,18 +169,6 @@ export default function ProductMain() {
               {/* Placeholder badge */}
               <div className="absolute top-5 right-5 bg-black/40 text-white/60 text-xs px-3 py-1 rounded-full backdrop-blur-sm">
                 Foto próximamente
-              </div>
-
-              {/* ANTES / DESPUÉS labels */}
-              <div className="absolute bottom-6 left-0 right-0 flex z-10">
-                <div className="w-1/2 px-5">
-                  <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Antes</p>
-                  <p className="text-white/80 font-serif text-lg font-semibold">Con canas</p>
-                </div>
-                <div className="w-1/2 px-5 text-right">
-                  <p className="text-white/50 text-xs uppercase tracking-widest mb-0.5">Después</p>
-                  <p className="text-cream-50 font-serif text-lg font-bold">{selected.name}</p>
-                </div>
               </div>
             </div>
 
