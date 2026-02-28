@@ -113,7 +113,6 @@ export default function BeforeAfter() {
 
       {/* Carousel — auto-scroll infinito, pausa al hover */}
       <div className="relative">
-        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
@@ -124,23 +123,16 @@ export default function BeforeAfter() {
                 key={`${t.id}-${i}`}
                 className="flex-shrink-0 w-72 rounded-3xl overflow-hidden border border-cream-200 shadow-sm hover:shadow-lg transition-shadow"
               >
-                {/* Before / After */}
                 <div className="grid grid-cols-2">
                   <div className="relative">
                     <div
                       className="h-48 w-full"
-                      style={{
-                        background: `linear-gradient(180deg, ${t.beforeBg}55 0%, ${t.beforeBg} 100%)`,
-                      }}
+                      style={{ background: `linear-gradient(180deg, ${t.beforeBg}55 0%, ${t.beforeBg} 100%)` }}
                     >
                       <div
                         className="absolute inset-0 opacity-30"
                         style={{
-                          backgroundImage: `repeating-linear-gradient(
-                            175deg,
-                            transparent 0px, transparent 2px,
-                            rgba(255,255,255,0.4) 2px, rgba(255,255,255,0.4) 3px
-                          )`,
+                          backgroundImage: `repeating-linear-gradient(175deg, transparent 0px, transparent 2px, rgba(255,255,255,0.4) 2px, rgba(255,255,255,0.4) 3px)`,
                         }}
                       />
                     </div>
@@ -155,18 +147,12 @@ export default function BeforeAfter() {
                   <div className="relative">
                     <div
                       className="h-48 w-full"
-                      style={{
-                        background: `linear-gradient(180deg, ${t.afterBg}88 0%, ${t.afterBg} 100%)`,
-                      }}
+                      style={{ background: `linear-gradient(180deg, ${t.afterBg}88 0%, ${t.afterBg} 100%)` }}
                     >
                       <div
                         className="absolute inset-0 opacity-20"
                         style={{
-                          backgroundImage: `repeating-linear-gradient(
-                            175deg,
-                            transparent 0px, transparent 2px,
-                            rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 3px
-                          )`,
+                          backgroundImage: `repeating-linear-gradient(175deg, transparent 0px, transparent 2px, rgba(255,255,255,0.3) 2px, rgba(255,255,255,0.3) 3px)`,
                         }}
                       />
                     </div>
@@ -179,7 +165,6 @@ export default function BeforeAfter() {
                   </div>
                 </div>
 
-                {/* Caption */}
                 <div className="p-4 bg-cream-50">
                   <p className="text-gray-700 italic text-xs leading-relaxed mb-3">{t.caption}</p>
                   <div className="flex items-center justify-between">

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Kolhair Shampoo", href: "/producto" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Contact Us", href: "/contacto" },
 ];
 

@@ -43,9 +43,9 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-brown-700">
+    <section className="py-14 bg-brown-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="text-brown-200 text-sm font-semibold tracking-widest uppercase mb-3 block">
             Resultados reales
           </span>
@@ -77,8 +77,26 @@ export default function Testimonials() {
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brown-400 flex items-center justify-center text-cream-50 font-semibold text-sm flex-shrink-0">
-                  {t.avatar}
+                {/* Photo placeholder — swap for <img src="..." /> when real photos arrive */}
+                <div className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden border-2 border-brown-400/50 relative">
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: t.gender === "F"
+                        ? "linear-gradient(135deg, #C49A6C 0%, #8B5E3C 100%)"
+                        : "linear-gradient(135deg, #5C3D2E 0%, #3B1F0E 100%)",
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-end justify-center pb-0">
+                    {/* Silhouette shape */}
+                    <div
+                      className="w-7 h-7 rounded-full mb-[-4px] flex-shrink-0"
+                      style={{ background: "rgba(255,255,255,0.25)" }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-white/80 font-bold text-sm">{t.avatar}</span>
+                  </div>
                 </div>
                 <div>
                   <p className="text-cream-50 font-semibold text-sm">{t.name}</p>

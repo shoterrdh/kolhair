@@ -13,8 +13,18 @@ const BENEFITS = [
   "Apto para todo tipo de cabello",
 ];
 
+// Thumbnail funnel — replace bg with real image src when available
+const THUMBNAILS = [
+  { id: 0, label: "Antes / Después", type: "split" },
+  { id: 1, label: "El frasco", type: "product" },
+  { id: 2, label: "En la ducha", type: "usage" },
+  { id: 3, label: "Resultado", type: "result" },
+  { id: 4, label: "Natural", type: "lifestyle" },
+];
+
 export default function ProductMain() {
   const [selectedId, setSelectedId] = useState(products[0].id);
+  const [activeThumb, setActiveThumb] = useState(0);
   const [purchaseType, setPurchaseType] = useState<PurchaseType>("subscription");
   const [frequency, setFrequency] = useState<Frequency>("monthly");
   const [loading, setLoading] = useState(false);
@@ -54,20 +64,20 @@ export default function ProductMain() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-          {/* ── LEFT: Before/After split preview (sticky) ── */}
+          {/* ── LEFT: Preview + thumbnails (sticky) ── */}
           <div className="lg:sticky lg:top-24">
+
+            {/* Main preview image */}
             <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
 
               {/* Split: left = before (gray/canas), right = after (color) */}
               <div className="absolute inset-0 flex">
-                {/* ANTES — gray canas */}
                 <div
                   className="w-1/2 h-full"
                   style={{
                     background: "linear-gradient(160deg, #B8B8B8 0%, #8A8A8A 55%, #C0C0C0 100%)",
                   }}
                 />
-                {/* DESPUÉS — selected color */}
                 <div
                   className="w-1/2 h-full transition-all duration-700"
                   style={{
@@ -90,7 +100,7 @@ export default function ProductMain() {
                 }}
               />
 
-              {/* Divider line between before/after */}
+              {/* Divider line */}
               <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/50 z-10" />
 
               {/* Bottom dark gradient */}
@@ -122,6 +132,42 @@ export default function ProductMain() {
                 </div>
               </div>
             </div>
+
+            {/* Thumbnail strip */}
+            <div className="flex gap-3 mt-3 overflow-x-auto pb-1 snap-x">
+              {THUMBNAILS.map((thumb) => (
+                <button
+                  key={thumb.id}
+                  onClick={() => setActiveThumb(thumb.id)}
+                  className={`snap-start flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
+                    activeThumb === thumb.id
+                      ? "border-brown-700 shadow-md scale-105"
+                      : "border-cream-200 hover:border-brown-300"
+                  }`}
+                >
+                  {/* Placeholder — swap for <img src={thumb.src} .../> when real images arrive */}
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{
+                      background:
+                        thumb.type === "split"
+                          ? `linear-gradient(90deg, #A0A0A0 50%, ${selected.colorHex} 50%)`
+                          : thumb.type === "product"
+                          ? `linear-gradient(135deg, ${selected.colorLight}, ${selected.colorHex})`
+                          : thumb.type === "usage"
+                          ? "linear-gradient(135deg, #E8F4F8, #B8D8E8)"
+                          : thumb.type === "result"
+                          ? `linear-gradient(135deg, ${selected.colorHex}88, ${selected.colorLight})`
+                          : "linear-gradient(135deg, #F0EAD6, #C8A882)",
+                    }}
+                  >
+                    <span className="text-white/70 text-[9px] font-medium text-center px-1 leading-tight">
+                      {thumb.label}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* ── RIGHT: Purchase flow ── */}
@@ -134,7 +180,7 @@ export default function ProductMain() {
               Más joven en cada ducha. 100% natural.
             </p>
 
-            {/* Benefits — compact single container */}
+            {/* Benefits — compact */}
             <div className="flex flex-wrap gap-x-4 gap-y-1.5 bg-white border border-cream-200 rounded-xl px-3 py-2.5 mb-6">
               {BENEFITS.map((b) => (
                 <div key={b} className="flex items-center gap-1.5">
@@ -191,7 +237,6 @@ export default function ProductMain() {
             {/* ── Purchase box ── */}
             <div className="rounded-2xl overflow-hidden border border-brown-200 mb-5">
 
-              {/* Header */}
               <div className="bg-brown-800 text-cream-50 text-center py-2.5">
                 <span className="text-xs font-bold tracking-widest uppercase">Oferta limitada</span>
               </div>
@@ -208,11 +253,8 @@ export default function ProductMain() {
                     isSubscription ? "border-brown-700" : "border-gray-300"
                   }`}
                 >
-                  {isSubscription && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />
-                  )}
+                  {isSubscription && <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />}
                 </div>
-
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-0.5">
                     <span className="font-semibold text-brown-800 text-sm">Suscripción</span>
@@ -224,12 +266,10 @@ export default function ProductMain() {
                     $40 primera entrega · luego <strong>$30/mes</strong>
                   </p>
                 </div>
-
                 <div className="text-right flex-shrink-0">
                   <p className="text-gray-400 text-xs line-through">$45.00</p>
                   <p className="font-bold text-brown-800 text-xl leading-tight">
-                    $30.00
-                    <span className="text-xs font-normal text-gray-500">/mes</span>
+                    $30.00<span className="text-xs font-normal text-gray-500">/mes</span>
                   </p>
                 </div>
               </div>
@@ -282,16 +322,12 @@ export default function ProductMain() {
                     !isSubscription ? "border-brown-700" : "border-gray-300"
                   }`}
                 >
-                  {!isSubscription && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />
-                  )}
+                  {!isSubscription && <div className="w-2.5 h-2.5 rounded-full bg-brown-700" />}
                 </div>
-
                 <div className="flex-1">
                   <p className="font-semibold text-brown-800 text-sm">Compra única</p>
                   <p className="text-gray-500 text-xs">Sin compromiso · Compra cuando quieras</p>
                 </div>
-
                 <div className="text-right flex-shrink-0">
                   <p className="font-bold text-brown-800 text-xl">$45.00</p>
                 </div>

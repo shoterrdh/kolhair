@@ -1,4 +1,6 @@
 import ProductMain from "@/components/ProductMain";
+import ProductDescription from "@/components/ProductDescription";
+import UsvsThem from "@/components/UsvsThem";
 import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
@@ -13,6 +15,8 @@ export default function ProductPage() {
   return (
     <main>
       <ProductMain />
+      <ProductDescription />
+      <UsvsThem />
       <BeforeAfter />
       <Testimonials />
       <Footer />

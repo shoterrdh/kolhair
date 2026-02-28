@@ -65,7 +65,10 @@ export async function POST(request: NextRequest) {
       ? `Kolhair — ${product.name} (cada 2 meses)`
       : `Kolhair — ${product.name} (mensual)`;
 
-    const session = await stripe.checkout.sessions.create({
+    // Use `any` cast to pass add_invoice_items — valid Stripe API field but
+    // missing from SDK TypeScript types in the installed version.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const subscriptionParams: any = {
       payment_method_types: ["card"],
       line_items: [
         {
@@ -101,7 +104,8 @@ export async function POST(request: NextRequest) {
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#comprar`,
       metadata: { productId: product.id, purchaseType: "subscription", frequency },
-    });
+    };
+    const session = await stripe.checkout.sessions.create(subscriptionParams);
 
     return NextResponse.json({ url: session.url });
   } catch (error) {
