@@ -146,10 +146,10 @@ export default function ProductMain() {
   return (
     <section className="bg-cream-50 py-10 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
 
           {/* ── MOBILE ONLY: Rating + Title above image ── */}
-          <div className="lg:hidden">
+          <div className="order-1 lg:hidden">
             <a href="#resenas" className="flex items-center gap-2 mb-2 w-fit group">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -168,7 +168,7 @@ export default function ProductMain() {
           </div>
 
           {/* ── LEFT: Preview + thumbnails (sticky) ── */}
-          <div className="lg:sticky lg:top-24">
+          <div className="order-2 lg:order-1 lg:sticky lg:top-24">
 
             {/* Main preview image — changes based on active thumbnail */}
             <div className="relative rounded-3xl overflow-hidden aspect-square lg:aspect-[4/5] shadow-2xl">
@@ -313,7 +313,7 @@ export default function ProductMain() {
           </div>
 
           {/* ── RIGHT: Purchase flow ── */}
-          <div>
+          <div className="order-3 lg:order-2">
 
             {/* ── Mini reviews strip ── */}
             <div className="mb-4 -mx-1 overflow-hidden">
