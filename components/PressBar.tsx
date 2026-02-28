@@ -2,7 +2,7 @@ const logos = ["VOGUE", "InStyle", "GQ", "ELLE", "Cosmopolitan", "Harper's Bazaa
 
 export default function PressBar() {
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-8">
+    <div className="px-4 sm:px-6 lg:px-8 py-4">
       <div className="border border-brown-200 rounded-2xl overflow-hidden shadow-sm">
 
         {/* Label */}

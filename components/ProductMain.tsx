@@ -146,13 +146,32 @@ export default function ProductMain() {
   return (
     <section className="bg-cream-50 py-10 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+
+          {/* ── MOBILE ONLY: Rating + Title above image ── */}
+          <div className="lg:hidden">
+            <a href="#resenas" className="flex items-center gap-2 mb-2 w-fit group">
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-sm font-bold text-brown-800">4.7</span>
+              <span className="text-xs text-gray-400 underline underline-offset-2 decoration-dotted">· 10,000+ reseñas</span>
+            </a>
+            <h1 className="font-serif text-4xl font-bold text-brown-800 mb-0.5">Kolhair</h1>
+            <p className="text-xs font-semibold tracking-widest uppercase text-brown-400 mb-3">
+              Más joven en cada ducha. 100% natural.
+            </p>
+          </div>
 
           {/* ── LEFT: Preview + thumbnails (sticky) ── */}
           <div className="lg:sticky lg:top-24">
 
             {/* Main preview image — changes based on active thumbnail */}
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden aspect-square lg:aspect-[4/5] shadow-2xl">
 
               {/* ── View 0: Antes / Después split ── */}
               {activeThumb === 0 && (
@@ -331,8 +350,8 @@ export default function ProductMain() {
               </div>
             </div>
 
-            {/* Rating summary */}
-            <a href="#resenas" className="flex items-center gap-2 mb-3 w-fit group">
+            {/* Rating summary — desktop only (mobile shown above image) */}
+            <a href="#resenas" className="hidden lg:flex items-center gap-2 mb-3 w-fit group">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -344,11 +363,11 @@ export default function ProductMain() {
               <span className="text-xs text-gray-400 group-hover:text-brown-500 transition-colors underline underline-offset-2 decoration-dotted">· 10,000+ reseñas</span>
             </a>
 
-            {/* Title */}
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold text-brown-800 mb-1">
+            {/* Title — desktop only (mobile shown above image) */}
+            <h1 className="hidden lg:block font-serif text-4xl sm:text-5xl font-bold text-brown-800 mb-1">
               Kolhair
             </h1>
-            <p className="text-xs font-semibold tracking-widest uppercase text-brown-400 mb-5">
+            <p className="hidden lg:block text-xs font-semibold tracking-widest uppercase text-brown-400 mb-5">
               Más joven en cada ducha. 100% natural.
             </p>
 
