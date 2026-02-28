@@ -1,5 +1,6 @@
 import ProductMain from "@/components/ProductMain";
 import ProductDescription from "@/components/ProductDescription";
+import PressBar from "@/components/PressBar";
 import UsvsThem from "@/components/UsvsThem";
 import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
@@ -16,6 +17,7 @@ export default function ProductPage() {
     <main>
       <ProductMain />
       <ProductDescription />
+      <PressBar />
       <UsvsThem />
       <BeforeAfter />
       <Testimonials />
