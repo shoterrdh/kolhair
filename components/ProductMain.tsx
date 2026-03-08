@@ -171,7 +171,7 @@ export default function ProductMain() {
           <div className="order-2 lg:order-1 lg:sticky lg:top-24">
 
             {/* Main preview image — changes based on active thumbnail */}
-            <div className="relative rounded-3xl overflow-hidden aspect-square lg:aspect-[4/5] shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden aspect-square lg:aspect-[3/4] lg:max-h-[520px] shadow-2xl">
 
               {/* ── View 0: Antes / Después split ── */}
               {activeThumb === 0 && (
