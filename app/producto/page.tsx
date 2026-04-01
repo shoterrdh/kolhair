@@ -2,8 +2,9 @@ import ProductMain from "@/components/ProductMain";
 import TrustBar from "@/components/TrustBar";
 import BeforeAfter from "@/components/BeforeAfter";
 import ProductDescription from "@/components/ProductDescription";
-import UsvsThem from "@/components/UsvsThem";
+import CostComparison from "@/components/CostComparison";
 import Testimonials from "@/components/Testimonials";
+import ProductFAQ from "@/components/ProductFAQ";
 import Guarantee from "@/components/Guarantee";
 import Footer from "@/components/Footer";
 
@@ -20,8 +21,9 @@ export default function ProductPage() {
       <TrustBar />
       <BeforeAfter />
       <ProductDescription />
-      <UsvsThem />
+      <CostComparison />
       <Testimonials />
+      <ProductFAQ />
       <Guarantee />
       <Footer />
     </main>

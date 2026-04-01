@@ -100,8 +100,36 @@ export default function ProductDescription() {
             </div>
           </div>
 
-          {/* Right: Ingredients accordion + science note */}
+          {/* Right: Timeline + Ingredients */}
           <div>
+            {/* Compact timeline */}
+            <span className="text-brown-400 text-xs font-semibold tracking-widest uppercase mb-3 block">
+              Qué esperar
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brown-800 mb-5 leading-tight">
+              Resultados semana a semana
+            </h2>
+            <div className="space-y-3 mb-8">
+              {[
+                { period: "Primeros 3 lavados", result: "Transición visible — tono más uniforme", pct: 25 },
+                { period: "Semana 1-2", result: "Canas en sienes y coronilla se difuminan", pct: 55 },
+                { period: "Semana 3-4", result: "Cobertura consolidada — mantenimiento fácil", pct: 85 },
+              ].map((step) => (
+                <div key={step.period} className="flex items-center gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-brown-700 text-sm font-semibold">{step.period}</p>
+                      <p className="text-brown-400 text-xs">{step.pct}%</p>
+                    </div>
+                    <div className="h-1.5 bg-cream-200 rounded-full overflow-hidden mb-1">
+                      <div className="h-full bg-brown-500 rounded-full" style={{ width: `${step.pct}%` }} />
+                    </div>
+                    <p className="text-gray-500 text-xs">{step.result}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <span className="text-brown-400 text-xs font-semibold tracking-widest uppercase mb-3 block">
               Formulación
             </span>

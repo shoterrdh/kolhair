@@ -11,10 +11,10 @@ const INFO_TABS: Record<InfoTab, { label: string; items: React.ReactNode[] }> = 
   beneficios: {
     label: "Beneficios",
     items: [
-      "Resultado 100% natural desde el primer uso",
-      <>Uso progresivo <strong>SIN</strong> químicos que dañan tu pelo y cuero cabelludo</>,
-      "Nadie nota que lo usas — solo ven el resultado",
-      "No mancha la piel ni la ropa",
+      "Cobertura progresiva — resultados visibles en 3-6 lavados",
+      <>Fórmula 100% natural <strong>SIN</strong> amoníaco, peróxido ni parabenos</>,
+      "Nadie nota que lo usas — solo ven que te ves bien",
+      "No mancha la piel, la ducha ni la ropa",
     ],
   },
   "como-usar": {
@@ -74,10 +74,10 @@ const MINI_REVIEWS = [
 ];
 
 const BENEFITS = [
-  "Cubre canas desde el primer uso",
-  "Sin amoníaco ni químicos",
-  "Tan fácil como tu shampoo",
-  "Apto para todo tipo de cabello",
+  "Cobertura visible en 3-6 lavados",
+  "Sin amoníaco ni químicos agresivos",
+  "Tan fácil como tu shampoo habitual",
+  "No mancha la piel ni las toallas",
 ];
 
 // Thumbnail funnel — replace bg with real image src when available
@@ -414,7 +414,7 @@ export default function ProductMain() {
             <div className="rounded-xl overflow-hidden border border-brown-200 mb-4">
 
               <div className="bg-brown-800 text-cream-50 text-center py-1.5">
-                <span className="text-[10px] font-bold tracking-widest uppercase">Oferta limitada</span>
+                <span className="text-[10px] font-bold tracking-widest uppercase">Mejor precio</span>
               </div>
 
               {/* Subscription option */}
