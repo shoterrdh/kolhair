@@ -58,8 +58,8 @@ export async function POST(request: NextRequest) {
     }
 
     // ── SUBSCRIPTION ──────────────────────────────────────────────────────────
-    // First delivery: $40 (= recurring $30 + one-time supplement $10)
-    // Then recurring: $30 / month or every 2 months
+    // First delivery: $23 (= recurring $19 + one-time supplement $4)
+    // Then recurring: $19 / month or every 2 months
     const interval_count = frequency === "bimonthly" ? 2 : 1;
     const productLabel = frequency === "bimonthly"
       ? `Kolhair — ${product.name} (cada 2 meses)`
@@ -88,13 +88,13 @@ export async function POST(request: NextRequest) {
         },
       ],
       subscription_data: {
-        // $10 supplement on first invoice so first charge = $30 + $10 = $40
+        // $4 supplement on first invoice so first charge = $19 + $4 = $23
         add_invoice_items: [
           {
             price_data: {
               currency: "usd",
               product_data: { name: "Cargo primera entrega" },
-              unit_amount: 1000,
+              unit_amount: 400,
             },
             quantity: qty,
           },

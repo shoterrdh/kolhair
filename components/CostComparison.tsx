@@ -18,9 +18,9 @@ export default function CostComparison() {
     },
     {
       method: "KolHair",
-      costPerVisit: "~$1 por uso",
+      costPerVisit: "~$0.95 por uso",
       frequency: "Cada vez que te duchas",
-      annual: "Desde $180/año",
+      annual: "~$228/año con suscripción",
       extras: "Nada. Solo tu ducha.",
       time: "3-5 min (tu ducha habitual)",
       highlight: true,
@@ -38,7 +38,7 @@ export default function CostComparison() {
             ¿Cuánto llevas gastado solo en cubrir canas?
           </h2>
           <p className="section-subtitle mx-auto text-center">
-            Menos de $1 por uso. Tu peluquero te cobra 80 veces más por lo mismo.
+            Menos de $1 por uso con suscripción. Tu peluquero te cobra 60 veces más por lo mismo.
           </p>
         </div>
 

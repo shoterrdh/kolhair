@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "Si es un shampoo que uso todo el tiempo, ¿no me sale más caro que teñirme?",
     answer:
-      "Al contrario. Un bote de KolHair dura 15-20 lavados (~$1 por uso). Compáralo: una visita al salón cuesta $60-$120 cada 4-6 semanas. Un tinte de caja cuesta $8-$18 por aplicación única. KolHair reemplaza tanto el shampoo como la coloración — no es un gasto extra, es un reemplazo que cuesta menos.",
+      "Al contrario. Un bote de KolHair dura ~20 lavados. Con suscripción a $19/mes, eso es menos de $1 por uso. Compáralo: una visita al salón cuesta $60-$120 cada 4-6 semanas. KolHair reemplaza tanto el shampoo como la coloración — no es un gasto extra, es un reemplazo que cuesta menos.",
   },
   {
     question: "Dice \"100% natural\" pero todos dicen eso. ¿Cómo sé que es verdad?",

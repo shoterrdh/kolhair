@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "Si lo uso todo el tiempo, ¿no me sale más caro que teñirme?",
     answer:
-      "Al contrario. Un bote dura 15-20 lavados (~$1 por uso). Una visita al salón cuesta $60-$120 cada 4-6 semanas. KolHair reemplaza tanto el shampoo como la coloración — no es un gasto extra, es un reemplazo que cuesta menos.",
+      "Al contrario. Un bote dura ~20 lavados. Con suscripción a $19/mes, eso es menos de $1 por uso. Una visita al salón cuesta $60-$120 cada 4-6 semanas. KolHair reemplaza tanto el shampoo como la coloración — no es un gasto extra, es un reemplazo que cuesta menos.",
   },
   {
     question: "¿Qué pasa si no me convence?",

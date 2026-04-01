@@ -255,7 +255,7 @@ export default function ProductMain() {
               <div className="absolute top-5 left-5 bg-white rounded-2xl px-4 py-3 shadow-xl text-center min-w-[80px]">
                 <p className="text-gray-400 text-[11px] leading-tight">desde</p>
                 <p className="font-bold text-brown-700 text-2xl leading-snug">
-                  {isSubscription ? "$1.50" : "$2.25"}
+                  {isSubscription ? "$0.95" : "$1.40"}
                 </p>
                 <p className="text-gray-400 text-[11px] leading-tight">por uso</p>
               </div>
@@ -430,13 +430,13 @@ export default function ProductMain() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
                     <span className="font-semibold text-brown-800 text-xs">Suscripción</span>
-                    <span className="bg-brown-700 text-cream-50 text-[10px] px-1.5 py-px rounded-full font-bold whitespace-nowrap">Ahorra $15</span>
+                    <span className="bg-brown-700 text-cream-50 text-[10px] px-1.5 py-px rounded-full font-bold whitespace-nowrap">Ahorra $9</span>
                   </div>
-                  <p className="text-gray-400 text-[10px]">$40 primera · luego <strong className="text-gray-600">$30/mes</strong></p>
+                  <p className="text-gray-400 text-[10px]">$23 primera · luego <strong className="text-gray-600">$19/mes</strong></p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-gray-400 text-[10px] line-through">$45.00</p>
-                  <p className="font-bold text-brown-800 text-base leading-tight">$30<span className="text-[10px] font-normal text-gray-500">/mes</span></p>
+                  <p className="text-gray-400 text-[10px] line-through">$28.00</p>
+                  <p className="font-bold text-brown-800 text-base leading-tight">$19<span className="text-[10px] font-normal text-gray-500">/mes</span></p>
                 </div>
               </div>
 
@@ -477,7 +477,7 @@ export default function ProductMain() {
                   <p className="font-semibold text-brown-800 text-xs">Compra única</p>
                   <p className="text-gray-400 text-[10px]">Sin compromiso · Pago único</p>
                 </div>
-                <p className="font-bold text-brown-800 text-base">$45.00</p>
+                <p className="font-bold text-brown-800 text-base">$28.00</p>
               </div>
             </div>
 
