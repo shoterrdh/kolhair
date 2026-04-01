@@ -1,9 +1,10 @@
 import ProductMain from "@/components/ProductMain";
-import ProductDescription from "@/components/ProductDescription";
-import PressBar from "@/components/PressBar";
-import UsvsThem from "@/components/UsvsThem";
+import TrustBar from "@/components/TrustBar";
 import BeforeAfter from "@/components/BeforeAfter";
+import ProductDescription from "@/components/ProductDescription";
+import UsvsThem from "@/components/UsvsThem";
 import Testimonials from "@/components/Testimonials";
+import Guarantee from "@/components/Guarantee";
 import Footer from "@/components/Footer";
 
 export const metadata = {
@@ -16,11 +17,12 @@ export default function ProductPage() {
   return (
     <main>
       <ProductMain />
-      <PressBar />
+      <TrustBar />
       <BeforeAfter />
       <ProductDescription />
       <UsvsThem />
       <Testimonials />
+      <Guarantee />
       <Footer />
     </main>
   );
