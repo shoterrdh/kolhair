@@ -4,39 +4,54 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "¿Lo natural de verdad funciona? He probado cosas naturales antes y no funcionaron.",
+    question: "¿Lo natural de verdad funciona? He probado cosas \"naturales\" que no hacían nada.",
     answer:
-      "Es la pregunta más honesta que nos hacen. La diferencia está en la ciencia del cabello canoso: cuando el cabello pierde melanina, la fibra se vuelve mucho más receptiva a pigmentos externos. Kolhair usa esa receptividad a su favor. No necesita abrir la cutícula con amoníaco ni oxidar con peróxido porque el cabello canoso ya está 'abierto' para recibir color. El resultado es progresivo — en los primeros 4-6 lavados lo verás claramente.",
+      "Es la pregunta más honesta que recibimos. La diferencia está en cómo funciona el cabello canoso: cuando pierde melanina, la fibra se vuelve más porosa y receptiva a pigmentos externos. KolHair aprovecha esa receptividad natural — no necesita abrir la cutícula con amoníaco ni oxidar con peróxido. Es el mismo principio por el que la henna tiñe desde hace siglos: pigmento natural + superficie receptiva = color visible. En los primeros 4-6 lavados verás la diferencia.",
+  },
+  {
+    question: "¿Realmente cubre las canas o solo las disimula un poco? Tengo muchas y muy blancas.",
+    answer:
+      "Honestidad ante todo: KolHair es progresivo, no instantáneo. Para canas muy blancas y abundantes, el color se va acumulando lavado a lavado. Los primeros 3 lavados verás transición visible. En 2-3 semanas, cobertura significativa. No es el producto para quien necesita resultado total en una sesión — pero sí para quien quiere un mantenimiento natural sin química agresiva y sin que nadie note el cambio de golpe.",
   },
   {
     question: "¿Se va a notar que me estoy tiñendo el cabello?",
     answer:
-      "No. Esa es exactamente la razón de ser de Kolhair. El color no entra de golpe como un tinte — se construye lavado a lavado, de forma gradual. Tu entorno ve un cambio sutil y natural, nunca un antes y un después. Es el mismo principio que siguen muchas figuras públicas: siempre igual, sin que nadie sepa cuándo ni cómo.",
+      "No. El color no entra de golpe como un tinte — se construye lavado a lavado, de forma gradual. Tu entorno ve un cambio sutil y natural. La frase que más escuchamos de nuestros clientes: \"Nadie me preguntó si me teñí. Solo me dijeron que me veía bien.\"",
   },
   {
-    question: "¿Mancha la piel, la ducha o la ropa?",
+    question: "¿Mancha la piel, la ducha o las toallas?",
     answer:
-      "No mancha la piel. Los pigmentos botánicos de Kolhair están formulados para adherirse a la proteína del cabello (queratina), no a la piel. Si cae algo en el cuello o la frente, el agua lo limpia sin dejar huella. Para prendas claras, recomendamos escurrir bien el cabello antes de salir de la ducha — igual que con cualquier shampoo de color.",
+      "No mancha la piel. Los pigmentos botánicos están formulados para adherirse a la queratina del cabello, no a la piel. Si cae algo en el cuello o la frente, el agua lo limpia sin dejar huella. Para prendas claras, recomendamos escurrir bien el cabello antes de salir de la ducha. La bañera se limpia con agua — sin los dramas del tinte convencional.",
+  },
+  {
+    question: "Soy hombre y nunca he usado nada para las canas. ¿Esto es para mí?",
+    answer:
+      "KolHair fue diseñado exactamente para ese perfil. No es teñirse — es lavarse el pelo con un shampoo que además cubre canas. No necesitas ir a la peluquería, no necesitas pedirle ayuda a nadie, nadie tiene que saberlo. Se usa en la ducha en 3-5 minutos. Funciona igual en cabello grueso, fino, corto o largo.",
+  },
+  {
+    question: "¿El color quedará natural o artificial?",
+    answer:
+      "La acción progresiva produce un resultado que se integra gradualmente en tu cabello existente. No hay la línea de demarcación dura (raíz vs. longitud) ni el color absolutamente uniforme que delata un tinte reciente. El resultado se parece más a \"cabello con tu color natural\" que a \"cabello recién teñido\".",
   },
   {
     question: "¿Qué pasa si dejo de usarlo?",
     answer:
-      "Las canas vuelven gradualmente, exactamente como llegaron. No hay efecto rebote ni cambio brusco. Simplemente el color va saliendo poco a poco con cada lavado, en semanas, no de un día para otro. Tú tienes el control total en todo momento.",
+      "Las canas vuelven gradualmente, como llegaron. No hay efecto rebote ni cambio brusco. El color va saliendo poco a poco con cada lavado, en semanas. No estás comprometido a nada — si lo dejas, simplemente vuelves a donde estabas.",
   },
   {
-    question: "¿Cuántos lavados necesito para ver resultado?",
+    question: "Si es un shampoo que uso todo el tiempo, ¿no me sale más caro que teñirme?",
     answer:
-      "Los primeros resultados suelen verse entre el 3.° y 6.° lavado. La cobertura completa se alcanza progresivamente en 2-3 semanas de uso regular. Para mantener el color, muchos usuarios alternan: Kolhair 3-4 veces por semana y su shampoo habitual los demás días.",
+      "Al contrario. Un bote de KolHair dura 15-20 lavados (~$1 por uso). Compáralo: una visita al salón cuesta $60-$120 cada 4-6 semanas. Un tinte de caja cuesta $8-$18 por aplicación única. KolHair reemplaza tanto el shampoo como la coloración — no es un gasto extra, es un reemplazo que cuesta menos.",
   },
   {
-    question: "¿Qué color elijo si no estoy seguro?",
+    question: "Dice \"100% natural\" pero todos dicen eso. ¿Cómo sé que es verdad?",
     answer:
-      "Elige el tono más cercano a tu color natural. Si dudas entre dos, el más oscuro da mejor cobertura de canas — siempre es más fácil bajar un poco la intensidad (lavando con tu shampoo habitual) que subir. Si tu cabello era Negro o Castaño Oscuro antes de que aparecieran las canas, empieza por ahí.",
+      "Lo verificable: sin amoníaco, sin peróxido de hidrógeno, sin parabenos. Estos son los tres agentes más documentados como causantes de irritación y daño capilar en la literatura dermatológica. Su ausencia no es un claim de marketing — es formulación. Si tu tinte actual tiene alguno de estos, tu cuero cabelludo ya sabe la diferencia.",
   },
   {
-    question: "¿Puedo usarlo si ya tengo el cabello teñido con tinte tradicional?",
+    question: "¿Puedo usarlo si tengo el cabello teñido o si me hago keratina?",
     answer:
-      "Sí. Kolhair es compatible con cabello previamente teñido. No interfiere con tintes oxidativos anteriores. Lo que sí puede ocurrir: si tu tinte base tiene tonos muy diferentes al color Kolhair que eliges, el resultado en las raíces y las canas puede variar ligeramente. Para resultados más consistentes, úsalo después de que tu tinte anterior vaya saliendo.",
+      "Sí. KolHair es compatible con cabello previamente teñido y tratamientos de keratina. No interfiere con procesos anteriores. Lo ideal es usarlo cuando tu tinte anterior vaya saliendo, para una transición natural. La fórmula sin oxidación no daña tratamientos previos.",
   },
 ];
 
@@ -48,9 +63,12 @@ export default function FAQ() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-brown-400 text-sm font-semibold tracking-widest uppercase mb-3 block">
-            FAQ
+            Preguntas reales
           </span>
-          <h2 className="section-title mb-4">Preguntas frecuentes</h2>
+          <h2 className="section-title mb-4">Lo que preguntan antes de comprar</h2>
+          <p className="section-subtitle mx-auto text-center">
+            Las dudas más comunes — con respuestas honestas, no de marketing.
+          </p>
         </div>
 
         <div className="space-y-3">
